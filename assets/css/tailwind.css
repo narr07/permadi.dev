@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .masonry {
+    column-gap: 2;
+    column-count: 1;
+  }
+  .masonry-sm {
+    column-gap: 4;
+    column-count: 2;
+  }
+  .masonry-md {
+    column-gap: 4;
+    column-count: 3;
+  }
+  .break-inside {
+    break-inside: avoid;
+  }
+}
+
+@layer components {
+  .cardHover {
+    @apply hover:bg-yellow duration-150 transition hover:ring-brand-900  bg-gray-100 dark:bg-gray-900 dark:ring-gray-800 ring-1 ring-gray-200  dark:hover:bg-gray-800   dark:hover:ring-yellow;
+  }
+  .headline {
+    @apply text-center max-w-3xl mx-auto block font-extrabold text-g2 md:text-g3;
+  }
+  .subheadline {
+    @apply mt-3 mb-6 text-center max-w-3xl mx-auto;
+  }
+}
+
+@layer base {
+  html {
+    @apply text-[16px]   scroll-smooth;
+  }
+  body {
+    @apply font-body text-primary-800 bg-brand-50 dark:bg-brand-950  dark:text-brand-400 tracking-tight;
+  }
+  h1 {
+    @apply leading-none  text-balance font-heading text-g3 text-brand-700 font-black dark:text-yellow;
+  }
+  h2 {
+    @apply font-heading text-g2 text-brand-700 font-black dark:text-yellow;
+  }
+
+  h3,
+  h4,
+  h5 {
+    @apply font-heading text-brand-700 text-g1  font-black dark:text-primary-300;
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "navigation": {
+    "home": "Home",
+    "blog": "Articles",
+    "gallery": "Gallery",
+    "project": "Project"
+  },
+  "cta": "Download CV",
+  "messages": {
+    "welcome": "Welcome to our website!"
+  },
+  "buttons": {
+    "submit": "Submit"
+  }
+}

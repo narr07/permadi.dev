@@ -1,0 +1,15 @@
+{
+  "navigation": {
+    "home": "Home",
+    "blog": "Artikel",
+    "gallery": "Galeri",
+    "project": "Projek"
+  },
+  "cta": "Unduh CV",
+  "messages": {
+    "welcome": "Selamat datang di situs kami!"
+  },
+  "buttons": {
+    "submit": "Kirim"
+  }
+}
