@@ -9,6 +9,10 @@ export const routing = defineRouting({
     '/blog': {
       id: '/blog',
       en: '/blog',
+    },
+    '/blog/[slug]': {
+      id: '/blog/[slug]',
+      en: '/blog/[slug]',
     }
   }
 });

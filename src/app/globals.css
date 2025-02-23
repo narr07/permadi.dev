@@ -6,7 +6,7 @@
 
 @layer components {
   .cardHover {
-    @apply hover:bg-yellow duration-150 transition hover:ring-brand-900  bg-gray-100 dark:bg-gray-900 dark:ring-gray-800 ring-1 ring-gray-200  dark:hover:bg-gray-800   dark:hover:ring-yellow;
+    @apply hover:bg-yellow duration-150 transition hover:ring-brand-900  bg-gray-100 dark:bg-gray-900 dark:ring-gray-800 ring-2 ring-gray-200  dark:hover:bg-brand-800   dark:hover:ring-brand-600;
   }
   .headline {
     @apply text-center max-w-3xl mx-auto block font-extrabold text-g2 md:text-g3;
