@@ -37,9 +37,10 @@ export default function RootLayout({
       disableTransitionOnChange
     >
       <Navbar />
-        <LanguageSwitcher />
  
+      <div className="py-20">
         {children}
+      </div>
         </ThemeProvider>
       </body>
     </html>

@@ -35,8 +35,11 @@ export default function LanguageSwitcher() {
 
   return (
     <div>
-      <button onClick={() => handleChangeLanguage('id')} disabled={lang === 'id'}>Indonesia</button>
-      <button onClick={() => handleChangeLanguage('en')} disabled={lang === 'en'}>English</button>
+      {lang === 'id' ? (
+        <button onClick={() => handleChangeLanguage('en')}>English</button>
+      ) : (
+        <button onClick={() => handleChangeLanguage('id')}>Indonesia</button>
+      )}
     </div>
   );
 }
