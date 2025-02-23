@@ -27,7 +27,7 @@ export function Post({ post }: PostProps) {
       )}
       {body && <PortableText value={body} />}
       <hr />
-      <Link href="/">Bak t home</Link>
+      <Link href="/">Back  home</Link>
     </main>
   );
 }

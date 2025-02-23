@@ -1,6 +1,12 @@
 {
   "HomePage": {
     "title": "Halo Dunia",
+    "description": "Ini adalah halaman utama",
     "about": "Pergi Ke Halaman About "
+  },
+  "NavBar": {
+    "home": "Beranda",
+    "blog":  "Blog",
+    "project":  "Proyek"
   }
 }

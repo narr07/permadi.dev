@@ -10,6 +10,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { HtmlLangWrapper } from '@/components/HtmlLangWrapper';
 
+
 export default async function BlogLayout({
   children,
   params,
@@ -23,14 +24,14 @@ export default async function BlogLayout({
     notFound();
   }
 
-  const messages = await getMessages(locale as any);
+  const messages = await getMessages();
 
   const isDraftMode = (await draftMode()).isEnabled;
 
   return (
     <HtmlLangWrapper>
       <NextIntlClientProvider messages={messages} locale={locale}>
-        <div className="bg-white min-h-screen max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto" >
           {children}
           <SanityLive />
           {isDraftMode && (

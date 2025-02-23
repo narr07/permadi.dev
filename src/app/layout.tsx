@@ -3,6 +3,9 @@ import {  Host_Grotesk, Sofia_Sans } from "next/font/google";
 import "./globals.css";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
+import { ThemeProvider } from "@/components/theme-provider"
+import { Navbar } from "@/components/Navbar";
+
 const sofiaSans = Sofia_Sans({
   variable: "--font-sofia-sans",
   subsets: ["latin"],
@@ -27,9 +30,17 @@ export default function RootLayout({
     <html suppressHydrationWarning>
       <body
         className={`${sofiaSans.variable} ${hostGrostesk.variable} antialiased`}
-      >
+      > <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
+      <Navbar />
         <LanguageSwitcher />
+ 
         {children}
+        </ThemeProvider>
       </body>
     </html>
   );
