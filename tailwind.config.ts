@@ -1,4 +1,6 @@
+import { Host_Grotesk } from 'next/font/google';
 import type { Config } from "tailwindcss";
+import typography from "@tailwindcss/typography";
 
 export default {
   content: [
@@ -12,7 +14,11 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        sans: ["Sofia Sans", "sans-serif"],
+        host: ["Host Grotesk", "sans-serif"],
     },
+  }
   },
-  plugins: [],
+  plugins: [typography],
 } satisfies Config;
