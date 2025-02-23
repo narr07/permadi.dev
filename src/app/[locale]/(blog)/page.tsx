@@ -8,11 +8,11 @@ import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 
 export default async function Page({
-  params: { locale }
+  params: paramsPromise
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
- 
+  const { locale } = await paramsPromise;
   const isDraftMode = (await draftMode()).isEnabled;
 
   const { data: posts } = await sanityFetch({
@@ -23,7 +23,6 @@ export default async function Page({
 
   return (
     <>
-       
       <Posts posts={posts} />
     </>
   );
