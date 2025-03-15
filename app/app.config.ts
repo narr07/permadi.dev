@@ -1,8 +1,36 @@
+// app/app.config.ts
 export default defineAppConfig({
   ui: {
     colors: {
-      primary: 'blue',
-      neutral: 'zinc'
-    }
-  }
+      primary: 'permadi',
+      neutral: 'permadi',
+    },
+    card: {
+      slots: {
+        root: 'rounded-[calc(var(--ui-radius)*2)]',
+        header: 'p-4 sm:px-6',
+        body: 'p-4 sm:p-6',
+        footer: 'p-4 sm:px-6',
+      },
+      variants: {
+        variant: {
+          solid: {
+            root: 'bg-(--ui-bg-inverted) text-(--ui-bg)',
+          },
+          outline: {
+            root: 'bg-primary-200 dark:bg-primary-800 ring-2 ring-permadi-700 divide-y divide-permadi-700',
+          },
+          soft: {
+            root: 'bg-(--ui-bg-elevated)/50 divide-y divide-(--ui-border)',
+          },
+          subtle: {
+            root: 'bg-(--ui-bg-elevated)/50 ring ring-(--ui-border) divide-y divide-(--ui-border)',
+          },
+        },
+      },
+      defaultVariants: {
+        variant: 'outline',
+      },
+    },
+  },
 })

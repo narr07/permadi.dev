@@ -1,2 +1,94 @@
-@import 'tailwindcss' theme(static);
-@import '@nuxt/ui';
+@import "tailwindcss" theme(static);
+
+/* Then import "@nuxt/ui": */
+@import "@nuxt/ui";
+
+@theme static {
+  --font-sans: "Host Grotesk", sans-serif;
+  --font-title: "Sofia Sans", sans-serif;
+
+  --breakpoint-3xl: 1920px;
+
+  --color-permadi-50: #edf5f3;
+  --color-permadi-100: #d7e9e4;
+  --color-permadi-200: #c1ddd5;
+  --color-permadi-300: #abd1c6;
+  --color-permadi-400: #80aea5;
+  --color-permadi-500: #568c85;
+  --color-permadi-600: #2b6964;
+  --color-permadi-700: #004643;
+  --color-permadi-800: #023230;
+  --color-permadi-900: #031e1c;
+  --color-permadi-950: #050a09;
+
+  --color-gray-50: #f4f8fa;
+  --color-gray-100: #e5edf4;
+  --color-gray-200: #d2e0eb;
+  --color-gray-300: #b2cdde;
+  --color-gray-400: #90b4ce;
+  --color-gray-500: #7299bf;
+  --color-gray-600: #5f84b1;
+  --color-gray-800: #495f84;
+  --color-gray-900: #3e4f6a;
+  --color-gray-950: #293242;
+
+  --color-yellow-50: #ffffff;
+  --color-yellow-100: #fffefd;
+  --color-yellow-200: #fdeed6;
+  --color-yellow-300: #fcddaf;
+  --color-yellow-400: #facd87;
+  --color-yellow-500: #f9bc60;
+  --color-yellow-600: #f7a52a;
+  --color-yellow-700: #e08a08;
+  --color-yellow-800: #aa6906;
+  --color-yellow-900: #744804;
+  --color-yellow-950: #593703;
+
+  --color-blue-50: #f2f9ff;
+  --color-blue-100: #def0fe;
+  --color-blue-200: #b6defe;
+  --color-blue-300: #8dcdfd;
+  --color-blue-400: #65bbfd;
+  --color-blue-500: #3da9fc;
+  --color-blue-600: #0691fb;
+  --color-blue-700: #0371c6;
+  --color-blue-800: #02528e;
+  --color-blue-900: #013257;
+  --color-blue-950: #01223c;
+
+  --color-red-50: #fefbfb;
+  --color-red-100: #fbeaea;
+  --color-red-200: #f5c8c8;
+  --color-red-300: #eea6a6;
+  --color-red-400: #e88384;
+  --color-red-500: #e16162;
+  --color-red-600: #d83233;
+  --color-red-700: #b02123;
+  --color-red-800: #811919;
+  --color-red-900: #521010;
+  --color-red-950: #3a0b0b;
+
+  --color-green-50: #eefbf4;
+  --color-green-100: #d7f4e3;
+  --color-green-200: #b1e9ca;
+  --color-green-300: #7fd6ad;
+  --color-green-400: #4abd8a;
+  --color-green-500: #2cb67d;
+  --color-green-600: #198258;
+  --color-green-700: #146849;
+  --color-green-800: #12533c;
+  --color-green-900: #104432;
+  --color-green-950: #08261d;
+
+  --color-purple-50: #f7f5fd;
+  --color-purple-100: #f0edfa;
+  --color-purple-200: #e4ddf7;
+  --color-purple-300: #cec2f0;
+  --color-purple-400: #b69ee7;
+  --color-purple-500: #a786df;
+  --color-purple-600: #8c59ce;
+  --color-purple-700: #7c47ba;
+  --color-purple-800: #673b9c;
+  --color-purple-900: #563280;
+  --color-purple-950: #361f56;
+}
