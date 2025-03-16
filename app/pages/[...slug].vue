@@ -31,7 +31,9 @@ if (!page.value) {
   })
 }
 
-useSeoMeta(page.value.seo)
+if (page.value?.seo) {
+  useSeoMeta(page.value.seo)
+}
 </script>
 
 <template>

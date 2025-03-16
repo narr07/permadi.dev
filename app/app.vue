@@ -3,11 +3,12 @@
 <template>
   <div>
     <UApp>
-      <UiNav />
-
       <NuxtRouteAnnouncer />
-
-      <NuxtPage />
+      <UiNav />
+      <div class="pt-20">
+        <NuxtPage />
+      </div>
+      <UiFooter />
     </UApp>
   </div>
 </template>

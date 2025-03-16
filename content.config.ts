@@ -11,13 +11,21 @@ export default defineContentConfig({
       schema: z.object({
         title: z.string(),
         description: z.string(),
-        navigation: z.union([
-          z.boolean(),
+        icon: z.string().editor({ input: 'icon' }).default('hugeicons:star-circle'),
+        navigation:
           z.object({
             title: z.string(),
-            icon: z.string(),
+            icon: z.string().editor({ input: 'icon' }).default('hugeicons:star-circle'),
           }),
-        ]),
+        seo: z.intersection(
+          z.object({
+            title: z.string().optional(),
+            description: z.string().optional(),
+            meta: z.array(z.record(z.string(), z.any())).optional(),
+            link: z.array(z.record(z.string(), z.any())).optional(),
+          }),
+          z.record(z.string(), z.any()),
+        ).optional().default({}).editor({ hidden: true }),
       }),
     }),
     pages_en: defineCollection({
@@ -29,13 +37,21 @@ export default defineContentConfig({
       schema: z.object({
         title: z.string(),
         description: z.string(),
-        navigation: z.union([
-          z.boolean(),
+        icon: z.string().editor({ input: 'icon' }).default('hugeicons:star-circle'),
+        navigation:
           z.object({
             title: z.string(),
-            icon: z.string(),
+            icon: z.string().editor({ input: 'icon' }).default('hugeicons:star-circle'),
           }),
-        ]),
+        seo: z.intersection(
+          z.object({
+            title: z.string().optional(),
+            description: z.string().optional(),
+            meta: z.array(z.record(z.string(), z.any())).optional(),
+            link: z.array(z.record(z.string(), z.any())).optional(),
+          }),
+          z.record(z.string(), z.any()),
+        ).optional().default({}).editor({ hidden: true }),
       }),
     }),
   },
