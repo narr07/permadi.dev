@@ -10,7 +10,7 @@ export default defineAppConfig({
     },
     card: {
       slots: {
-        root: 'rounded-[calc(var(--ui-radius)*2)]',
+        root: 'rounded',
         header: 'p-4 sm:px-6',
         body: 'p-4 sm:p-6',
         footer: 'p-4 sm:px-6',
