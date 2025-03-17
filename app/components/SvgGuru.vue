@@ -438,36 +438,11 @@
         y2="266.9"
       />
       <g>
-        <circle
-          style="fill: #004643"
-          cx="324.4"
-          cy="271.1"
-          r="2.7"
-        />
-        <circle
-          style="fill: #004643"
-          cx="324.4"
-          cy="296.6"
-          r="2.7"
-        />
-        <circle
-          style="fill: #004643"
-          cx="324.4"
-          cy="322.1"
-          r="2.7"
-        />
-        <circle
-          style="fill: #004643"
-          cx="324.4"
-          cy="347.6"
-          r="2.7"
-        />
-        <circle
-          style="fill: #004643"
-          cx="324.4"
-          cy="373"
-          r="2.7"
-        />
+        <circle style="fill: #004643" cx="324.4" cy="271.1" r="2.7" />
+        <circle style="fill: #004643" cx="324.4" cy="296.6" r="2.7" />
+        <circle style="fill: #004643" cx="324.4" cy="322.1" r="2.7" />
+        <circle style="fill: #004643" cx="324.4" cy="347.6" r="2.7" />
+        <circle style="fill: #004643" cx="324.4" cy="373" r="2.7" />
       </g>
     </g>
   </svg>

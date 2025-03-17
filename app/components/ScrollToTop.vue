@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 function scrollToTop() {
   if (window) {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   }
 }
 </script>
@@ -10,9 +10,8 @@ function scrollToTop() {
   <UButton
     icon="ph:caret-double-up-duotone"
     square
-
     rel="noopener noreferrer"
-    class="fixed z-50   bottom-3  md:hidden  left-2 button"
+    class="button fixed bottom-3 left-2 z-50 md:hidden"
     @click="scrollToTop()"
   >
     <span class="sr-only">To Top</span>

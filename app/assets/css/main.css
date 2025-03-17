@@ -93,6 +93,6 @@
   --color-purple-950: #361f56;
 }
 
-body{
+body {
   @apply bg-permadi-100 dark:bg-permadi-900;
 }
