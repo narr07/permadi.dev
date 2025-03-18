@@ -67,13 +67,14 @@ function isActive(path: string): boolean {
               <div v-if="navigations" class="flex items-center space-x-3">
                 <div v-for="item in navigations" :key="item.path">
                   <UButton
-                    class="ring-permadi-900 rounded ring-2"
+                    class="ring-permadi-900  rounded ring-2"
+
                     :icon="item.icon as string"
                     :to="localePath(item.path)"
                     :class="
                       isActive(item.path)
                         ? 'text-permadi-900 bg-yellow-500'
-                        : 'bg-permadi-300 text-permadi-700'
+                        : 'bg-permadi-100 text-permadi-700'
                     "
                   >
                     {{ item.title }}

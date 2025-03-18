@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { UButton } from '#components'
-
 interface EducationItem {
   level: string
   institution: string
@@ -75,11 +73,10 @@ const props = withDefaults(defineProps<{
     <div class="grid grid-cols-1 items-start justify-center gap-8 md:grid-cols-2">
       <div class="top-24 flex w-full flex-col items-center justify-center space-y-4 md:sticky">
         <UCard class="w-full">
-          <LazySvgDev hydrate-on-visible />
+          <LazySvgGuru hydrate-on-visible />
         </UCard>
         <UCard class="flex w-full flex-col space-y-2">
           <div v-for="(education, index) in props.educationHistory" :key="index">
-            <UButton icon="narr-narr" />
             <div class="mb-2 flex w-full items-center">
               <h2 class="mr-2 whitespace-nowrap">
                 {{ education.level }}
