@@ -42,8 +42,4 @@ if (page.value?.seo) {
     :dir="localeProperties?.dir ?? 'ltr'"
     :value="page"
   />
-  <UContainer>
-    <DisqusComments identifier="/" />
-    <DisqusCount identifier="/" />
-  </UContainer>
 </template>

@@ -6,7 +6,7 @@ interface EducationItem {
   icon: string
 }
 
-const props = withDefaults(
+withDefaults(
   defineProps<{
     education?: EducationItem[]
   }>(),
@@ -64,7 +64,7 @@ const props = withDefaults(
               </h2>
             </div>
           </div> -->
-          <UAccordion :items="props.education">
+          <UAccordion :items="education">
             <template #body="{ item }">
               Saya lulus {{ item.label }} pada tahun {{ item.period }} di
               {{ item.institution }}.

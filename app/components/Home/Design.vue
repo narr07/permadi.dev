@@ -12,7 +12,7 @@ interface ArticleItem {
   link?: string
 }
 
-const props = withDefaults(
+withDefaults(
   defineProps<{
     educationHistory?: EducationItem[]
     articleItems?: ArticleItem[]
@@ -85,7 +85,7 @@ const props = withDefaults(
           </UCard>
           <UCard class="flex w-full flex-col space-y-2">
             <div
-              v-for="(education, index) in props.educationHistory"
+              v-for="(education, index) in educationHistory"
               :key="index"
             >
               <div class="mb-2 flex w-full items-center">
@@ -109,7 +109,7 @@ const props = withDefaults(
           </UCard>
 
           <UCard
-            v-for="(article, index) in props.articleItems"
+            v-for="(article, index) in articleItems"
             :key="index"
             class="w-full"
           >
