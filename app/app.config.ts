@@ -5,14 +5,7 @@ export default defineAppConfig({
       primary: 'permadi',
       neutral: 'permadi',
     },
-    button: {
-      defaultVariants: {
-        size: 'md',
-        variant: 'solid',
 
-      },
-
-    },
     container: {
       base: 'max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 my-4',
     },
@@ -29,7 +22,7 @@ export default defineAppConfig({
             root: 'bg-(--ui-bg-inverted) text-(--ui-bg)',
           },
           outline: {
-            root: 'bg-primary-50 dark:bg-primary-800 ring-2 ring-permadi-700 divide-y divide-permadi-700',
+            root: 'bg-primary-50 dark:bg-primary-900 ring-2 dark:ring-permadi-800 ring-permadi-700 divide-y divide-permadi-700',
           },
           soft: {
             root: 'bg-(--ui-bg-elevated)/50 divide-y divide-(--ui-border)',

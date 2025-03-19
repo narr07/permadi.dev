@@ -15,9 +15,9 @@ const isDark = computed({
   <div>
     <ClientOnly v-if="!colorMode?.forced">
       <UButton
-        :icon="isDark ? 'narr:moon' : 'narr:sun'"
+        :icon="isDark ? 'hugeicons:moon' : 'hugeicons:sun-03'"
         :aria-label="isDark ? 'Aktifkan Tema Terang' : 'Aktifkan Tema Gelap'"
-        class="bg-white ring-2 ring-permadi-950  dark:bg-permadi-700 dark:ring-permadi-600"
+        class="bg-permadi-100 ring-2 ring-permadi-950 text-permadi-900 dark:text-permadi-50 dark:bg-permadi-800 dark:ring-permadi-700"
         @click="isDark = !isDark"
       />
 

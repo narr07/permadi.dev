@@ -54,7 +54,7 @@ function isActive(path: string): boolean {
   <div class="fixed top-2 z-50 w-full">
     <UContainer>
       <nav
-        class="bg-permadi-50 dark:bg-permadi-800 dark:ring-permadi-700 mx-auto max-w-6xl rounded p-2 ring-2"
+        class="bg-permadi-50 dark:bg-permadi-900 dark:ring-permadi-800 mx-auto max-w-6xl rounded p-2 ring-2"
       >
         <div class="flex items-center justify-between">
           <div>
@@ -62,28 +62,32 @@ function isActive(path: string): boolean {
               <UiLogo />
             </NuxtLink>
           </div>
-          <div class="flex items-center space-x-4">
+          <div class="flex items-center space-x-2">
             <div>
               <div v-if="navigations" class="flex items-center space-x-3">
                 <div v-for="item in navigations" :key="item.path">
                   <UButton
                     class="ring-permadi-900  rounded ring-2"
-
+                    square
                     :icon="item.icon as string"
                     :to="localePath(item.path)"
                     :class="
                       isActive(item.path)
                         ? 'text-permadi-900 bg-yellow-500'
-                        : 'bg-permadi-100 text-permadi-700'
+                        : 'bg-permadi-100 text-permadi-700 dark:bg-permadi-800 dark:text-permadi-50 ring-permadi-700'
                     "
                   >
-                    {{ item.title }}
+                    <span class="sr-only md:not-sr-only">
+                      {{ item.title }}
+                    </span>
                   </UButton>
                 </div>
               </div>
             </div>
-            <LangToogle />
-            <UiColorModeButton />
+            <div class="flex items-center ml-2 space-x-2">
+              <LangToogle />
+              <UiColorModeButton />
+            </div>
           </div>
         </div>
       </nav>
