@@ -1,41 +1,40 @@
 <script setup lang="ts">
-const { t } = useI18n()
+const { t } = useI18n();
 
 // Menggunakan computed untuk membuat navigasi reaktif terhadap perubahan bahasa
 const navigation = computed(() => [
   {
-    name: t('navigation.home'),
-    to: '/',
-    icon: 'narr:home',
+    name: t("navigation.home"),
+    to: "/",
+    icon: "narr:home",
   },
   {
-    name: t('navigation.article'),
-    to: '/article',
-    icon: 'narr:article',
+    name: t("navigation.article"),
+    to: "/article",
+    icon: "narr:article",
   },
   {
-    name: t('navigation.project'),
-    to: '/project',
-    icon: 'narr:project',
+    name: t("navigation.project"),
+    to: "/project",
+    icon: "narr:project",
   },
   {
-    name: t('navigation.gallery'),
-    to: '/gallery',
-    icon: 'narr:gallery',
+    name: t("navigation.gallery"),
+    to: "/gallery",
+    icon: "narr:gallery",
   },
-
-])
-const route = useRoute()
-const localePath = useLocalePath()
+]);
+const route = useRoute();
+const localePath = useLocalePath();
 
 function isActive(path: string): boolean {
-  const localizedPath = localePath(path)
+  const localizedPath = localePath(path);
   return (
-    route.path === localizedPath
-    || (localizedPath !== '/'
-      && localizedPath !== '/en'
-      && route.path.startsWith(`${localizedPath}/`))
-  )
+    route.path === localizedPath ||
+    (localizedPath !== "/" &&
+      localizedPath !== "/en" &&
+      route.path.startsWith(`${localizedPath}/`))
+  );
 }
 </script>
 
@@ -53,13 +52,11 @@ function isActive(path: string): boolean {
           </div>
           <div class="flex items-center space-x-2">
             <div>
-              <div
-                class="flex items-center space-x-3"
-              >
+              <div class="flex items-center space-x-3">
                 <div v-for="item in navigation" :key="item.name">
                   <UButton
                     :id="item.name.toLowerCase()"
-                    class="ring-permadi-900  rounded ring-2"
+                    class="ring-permadi-900 rounded ring-2"
                     square
                     :aria-label="`${item.name} navigation link`"
                     :icon="item.icon as string"
