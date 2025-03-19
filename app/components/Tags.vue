@@ -1,42 +1,42 @@
 <script setup lang="ts">
-const route = useRoute();
-const { locale, t } = useI18n();
-const localePath = useLocalePath();
-const router = useRouter();
+const route = useRoute()
+const { locale, t } = useI18n()
+const localePath = useLocalePath()
+const router = useRouter()
 
 // Fetch blog data dengan penanganan kesalahan
 const { data: blogs } = await useAsyncData(
   route.path,
   () => {
-    return queryCollection(`blog_${locale.value}`).order("date", "DESC").all();
+    return queryCollection(`blog_${locale.value}`).order('date', 'DESC').all()
   },
   {
     watch: [locale],
   },
-);
+)
 
 // Mengambil semua tag dari setiap artikel
 const tags = computed<string[]>(() => {
-  const selectedTags = new Set<string>();
+  const selectedTags = new Set<string>()
   if (blogs.value?.length) {
     blogs.value.forEach((blog) => {
       if (blog.tags?.length) {
         blog.tags.forEach((tag) => {
-          selectedTags.add(tag);
-        });
+          selectedTags.add(tag)
+        })
       }
-    });
+    })
   }
-  return Array.from(selectedTags);
-});
+  return Array.from(selectedTags)
+})
 
 // State untuk menyimpan tag yang dipilih
-const selectedTag = ref("");
+const selectedTag = ref('')
 
 // Fungsi untuk menangani pemilihan tag
 function handleTagSelect(tag: string) {
   if (tag) {
-    router.push(localePath(`/blog/tags/${tag}`));
+    router.push(localePath(`/blog/tags/${tag}`))
   }
 }
 </script>

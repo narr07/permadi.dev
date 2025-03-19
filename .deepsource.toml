@@ -1,5 +1,4 @@
 version = 1
-
 test_patterns = [
   "tests/**",
   "**/__tests__/**",
@@ -8,7 +7,6 @@ test_patterns = [
   "**/*.spec.js",
   "**/*.spec.ts"
 ]
-
 exclude_patterns = [
   "node_modules/",
   "dist/",
@@ -22,10 +20,9 @@ exclude_patterns = [
 [[analyzers]]
 name = "javascript"
 
-  [analyzers.meta]
-  plugins = ["vue"]
-  environment = [
-    "browser",
-    "nodejs"
-  ]
-
+[analyzers.meta]
+plugins = [ "vue" ]
+environment = [
+  "browser",
+  "nodejs"
+]

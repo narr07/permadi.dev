@@ -17,7 +17,7 @@ const isDark = computed({
       <UButton
         :icon="isDark ? 'hugeicons:moon' : 'hugeicons:sun-03'"
         :aria-label="isDark ? 'Aktifkan Tema Terang' : 'Aktifkan Tema Gelap'"
-        class="bg-permadi-100 ring-2 ring-permadi-950 text-permadi-900 dark:text-permadi-50 dark:bg-permadi-800 dark:ring-permadi-700"
+        class="bg-permadi-100 ring-permadi-950 text-permadi-900 dark:text-permadi-50 dark:bg-permadi-800 dark:ring-permadi-700 ring-2"
         @click="isDark = !isDark"
       />
 

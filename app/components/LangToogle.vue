@@ -22,7 +22,7 @@ const icon = computed(
 <template>
   <SwitchLocalePathLink :locale="value">
     <UButton
-      class="bg-permadi-100 ring-2 ring-permadi-950 text-permadi-900 dark:text-permadi-50 dark:bg-permadi-800 dark:ring-permadi-700"
+      class="bg-permadi-100 ring-permadi-950 text-permadi-900 dark:text-permadi-50 dark:bg-permadi-800 dark:ring-permadi-700 ring-2"
       square
       :icon="icon"
       size="md"

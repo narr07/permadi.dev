@@ -1,26 +1,26 @@
-import { defineCollection, defineContentConfig, z } from "@nuxt/content";
+import { defineCollection, defineContentConfig, z } from '@nuxt/content'
 
 export default defineContentConfig({
   collections: {
     pages_id: defineCollection({
-      type: "page",
+      type: 'page',
       source: {
-        include: "id/*.md",
-        prefix: "",
+        include: 'id/*.md',
+        prefix: '',
       },
       schema: z.object({
         title: z.string(),
         description: z.string(),
         icon: z
           .string()
-          .editor({ input: "icon" })
-          .default("hugeicons:star-circle"),
+          .editor({ input: 'icon' })
+          .default('hugeicons:star-circle'),
         navigation: z.object({
           title: z.string(),
           icon: z
             .string()
-            .editor({ input: "icon" })
-            .default("hugeicons:star-circle"),
+            .editor({ input: 'icon' })
+            .default('hugeicons:star-circle'),
         }),
         seo: z
           .intersection(
@@ -38,24 +38,24 @@ export default defineContentConfig({
       }),
     }),
     pages_en: defineCollection({
-      type: "page",
+      type: 'page',
       source: {
-        include: "en/*.md",
-        prefix: "",
+        include: 'en/*.md',
+        prefix: '',
       },
       schema: z.object({
         title: z.string(),
         description: z.string(),
         icon: z
           .string()
-          .editor({ input: "icon" })
-          .default("hugeicons:star-circle"),
+          .editor({ input: 'icon' })
+          .default('hugeicons:star-circle'),
         navigation: z.object({
           title: z.string(),
           icon: z
             .string()
-            .editor({ input: "icon" })
-            .default("hugeicons:star-circle"),
+            .editor({ input: 'icon' })
+            .default('hugeicons:star-circle'),
         }),
         seo: z
           .intersection(
@@ -73,4 +73,4 @@ export default defineContentConfig({
       }),
     }),
   },
-});
+})

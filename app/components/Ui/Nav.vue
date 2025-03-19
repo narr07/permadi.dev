@@ -23,7 +23,6 @@ const navigation = computed(() => [
     to: '/gallery',
     icon: 'narr:gallery',
   },
-
 ])
 const route = useRoute()
 const localePath = useLocalePath()
@@ -53,13 +52,11 @@ function isActive(path: string): boolean {
           </div>
           <div class="flex items-center space-x-2">
             <div>
-              <div
-                class="flex items-center space-x-3"
-              >
+              <div class="flex items-center space-x-3">
                 <div v-for="item in navigation" :key="item.name">
                   <UButton
                     :id="item.name.toLowerCase()"
-                    class="ring-permadi-900  rounded ring-2"
+                    class="ring-permadi-900 rounded ring-2"
                     square
                     :aria-label="`${item.name} navigation link`"
                     :icon="item.icon as string"
@@ -77,7 +74,7 @@ function isActive(path: string): boolean {
                 </div>
               </div>
             </div>
-            <div class="flex items-center ml-2 space-x-2">
+            <div class="ml-2 flex items-center space-x-2">
               <LangToogle />
               <UiColorModeButton />
             </div>

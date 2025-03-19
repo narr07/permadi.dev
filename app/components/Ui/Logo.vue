@@ -2,13 +2,13 @@
 defineProps({
   height: {
     type: String,
-    default: "32px",
+    default: '32px',
   },
   width: {
     type: String,
-    default: "32px",
+    default: '32px',
   },
-});
+})
 </script>
 
 <template>

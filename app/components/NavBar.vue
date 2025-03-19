@@ -1,24 +1,24 @@
 <script setup lang="ts">
-import { useRoute } from "vue-router";
+import { useRoute } from 'vue-router'
 
-const localePath = useLocalePath();
-const route = useRoute();
-const open = ref(false);
+const localePath = useLocalePath()
+const route = useRoute()
+const open = ref(false)
 function isActive(path: string): boolean {
-  const localizedPath = localePath(path);
+  const localizedPath = localePath(path)
   return (
-    route.path === localizedPath ||
-    (localizedPath !== "/" &&
-      localizedPath !== "/en" &&
-      route.path.startsWith(`${localizedPath}/`))
-  );
+    route.path === localizedPath
+    || (localizedPath !== '/'
+      && localizedPath !== '/en'
+      && route.path.startsWith(`${localizedPath}/`))
+  )
 }
 
 const menuItems = [
-  { name: "Home", path: "/", icon: "hugeicons:home-03" },
-  { name: "Blog", path: "/blog", icon: "hugeicons:book-04" },
-  { name: "Project", path: "/project", icon: "hugeicons:folder-check" },
-];
+  { name: 'Home', path: '/', icon: 'hugeicons:home-03' },
+  { name: 'Blog', path: '/blog', icon: 'hugeicons:book-04' },
+  { name: 'Project', path: '/project', icon: 'hugeicons:folder-check' },
+]
 </script>
 
 <template>

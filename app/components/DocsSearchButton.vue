@@ -1,93 +1,95 @@
 // app/components/DocsSearchButton.vue
 <script setup lang="ts">
 // Ambil locale dari i18n
-const { locale } = useI18n();
-const localePath = useLocalePath();
+const { locale } = useI18n()
+const localePath = useLocalePath()
 
 // Ref untuk istilah pencarian, hasil pencarian, dan status modal
-const searchTerm = ref("");
+const searchTerm = ref('')
 const search = ref<
   {
-    id: string;
-    title: string;
-    titles: string[];
-    level: number;
-    content: string;
+    id: string
+    title: string
+    titles: string[]
+    level: number
+    content: string
   }[]
->([]);
-const open = ref(false);
-const value = ref({});
+>([])
+const open = ref(false)
+const value = ref({})
 
 // Router untuk navigasi
-const router = useRouter();
+const router = useRouter()
 
 // Fungsi untuk memperbarui data pencarian
 async function updateSearchData() {
   const { data } = await useLazyAsyncData(`search-data-${locale.value}`, () =>
-    queryCollectionSearchSections(`blog_${locale.value}`),
-  );
+    queryCollectionSearchSections(`blog_${locale.value}`))
   if (data.value) {
-    search.value = data.value;
-  } else {
-    search.value = [];
+    search.value = data.value
+  }
+  else {
+    search.value = []
   }
 }
 
 // Panggil pertama kali saat komponen di-mount
-await updateSearchData();
+await updateSearchData()
 
 // Watch perubahan locale dan perbarui data pencarian
 watch(locale, async () => {
-  await updateSearchData();
-});
+  await updateSearchData()
+})
 
 // Computed untuk membuat grup berdasarkan hasil pencarian
 const groups = computed(() => [
   {
-    id: "blog",
+    id: 'blog',
     label: searchTerm.value
       ? `Blog posts matching “${searchTerm.value}”...`
-      : "Blog Posts",
+      : 'Blog Posts',
     items: search.value
       .filter(
-        (item) =>
-          item.title.toLowerCase().includes(searchTerm.value.toLowerCase()) ||
-          item.content.toLowerCase().includes(searchTerm.value.toLowerCase()),
+        item =>
+          item.title.toLowerCase().includes(searchTerm.value.toLowerCase())
+          || item.content.toLowerCase().includes(searchTerm.value.toLowerCase()),
       ) // Filter berdasarkan istilah pencarian di title atau content
-      .map((item) => ({
+      .map(item => ({
         id: item.id,
         label: item.title,
         suffix: `${item.content.slice(0, 50)}...`, // Tambahkan level dan cuplikan konten
-        description: item.titles.join(" > "), // Tampilkan hierarki judul jika ada
+        description: item.titles.join(' > '), // Tampilkan hierarki judul jika ada
         to: localePath(`/blog${item.id}`),
       })),
     ignoreFilter: true,
   },
-]);
+])
 
 // Fungsi untuk menangani pemilihan item di command palette
 function onSelect(item: any) {
   if (item.onSelect) {
-    item.onSelect();
-  } else if (item.to) {
+    item.onSelect()
+  }
+  else if (item.to) {
     if (
-      typeof item.to === "string" &&
-      (item.target === "_blank" || item.to.startsWith("http"))
+      typeof item.to === 'string'
+      && (item.target === '_blank' || item.to.startsWith('http'))
     ) {
-      window.open(item.to, item.target || "_blank");
-    } else {
-      router.push(item.to);
+      window.open(item.to, item.target || '_blank')
+    }
+    else {
+      router.push(item.to)
     }
   }
-  open.value = false; // Tutup modal setelah navigasi
+  open.value = false // Tutup modal setelah navigasi
 }
 
 // Shortcut keyboard untuk membuka modal pencarian
 defineShortcuts({
   meta_k: () => {
-    open.value = !open.value;
+    open.value = !open.value
   },
-});
+})
 </script>
 
 <template>

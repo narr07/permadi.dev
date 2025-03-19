@@ -26,8 +26,7 @@ const userVisitor = defineAsyncComponent(() => import('../components/userVisitor
           class="flex-none text-xl font-semibold text-black"
           href="#"
           aria-label="Brand"
-          >Brand</a
-        >
+        >Brand</a>
       </div>
       <!-- End Col -->
 
@@ -37,11 +36,12 @@ const userVisitor = defineAsyncComponent(() => import('../components/userVisitor
           <a
             class="focus:outline-hidden font-medium text-blue-600 decoration-2 hover:underline focus:underline"
             href="#"
-            >Htmlstream</a
-          >
+          >Htmlstream</a>
           family.
         </p>
-        <p class="text-gray-500">© 2025 Preline Labs.</p>
+        <p class="text-gray-500">
+          © 2025 Preline Labs.
+        </p>
       </div>
 
       <!-- Social Brands -->
