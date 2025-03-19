@@ -1,83 +1,93 @@
 <script lang="ts" setup>
 interface EducationItem {
-  level: string
-  institution: string
-  period: string
+  level: string;
+  institution: string;
+  period: string;
 }
 
 interface ArticleItem {
-  title: string
-  subtitle?: string
-  content: string
-  link?: string
+  title: string;
+  subtitle?: string;
+  content: string;
+  link?: string;
 }
 
-const props = withDefaults(defineProps<{
-  educationHistory?: EducationItem[]
-  articleItems?: ArticleItem[]
-}>(), {
-  educationHistory: () => [
-    {
-      level: 'SD',
-      institution: 'SDN TEJA I',
-      period: '2000-2006',
-    },
-    {
-      level: 'SMP',
-      institution: 'SMPN 1 RAJAGALUH',
-      period: '2006-2009',
-    },
-    {
-      level: 'SMA',
-      institution: 'SMAN 1 RAJAGALUH',
-      period: '2009-2012',
-    },
-    {
-      level: 'Universitas',
-      institution: 'UNIVERSITAS KUNINGAN',
-      period: '2012-2016',
-    },
-  ],
-  articleItems: () => [
-    {
-      title: 'Artikel 1',
-      subtitle: 'Pendidikan',
-      content: 'Ini adalah konten artikel tentang pendidikan di Indonesia.',
-    },
-    {
-      title: 'Artikel 2',
-      subtitle: 'Teknologi',
-      content: 'Inovasi teknologi dalam pembelajaran jarak jauh.',
-    },
-    {
-      title: 'Artikel 3',
-      subtitle: 'Kurikulum',
-      content: 'Perkembangan kurikulum pendidikan nasional.',
-    },
-    {
-      title: 'Artikel 4',
-      subtitle: 'Pembelajaran',
-      content: 'Metode pembelajaran efektif untuk siswa.',
-    },
-    {
-      title: 'Artikel 5',
-      subtitle: 'Prestasi',
-      content: 'Prestasi siswa dalam kompetisi nasional.',
-    },
-  ],
-})
+const props = withDefaults(
+  defineProps<{
+    educationHistory?: EducationItem[];
+    articleItems?: ArticleItem[];
+  }>(),
+  {
+    educationHistory: () => [
+      {
+        level: "SD",
+        institution: "SDN TEJA I",
+        period: "2000-2006",
+      },
+      {
+        level: "SMP",
+        institution: "SMPN 1 RAJAGALUH",
+        period: "2006-2009",
+      },
+      {
+        level: "SMA",
+        institution: "SMAN 1 RAJAGALUH",
+        period: "2009-2012",
+      },
+      {
+        level: "Universitas",
+        institution: "UNIVERSITAS KUNINGAN",
+        period: "2012-2016",
+      },
+    ],
+    articleItems: () => [
+      {
+        title: "Artikel 1",
+        subtitle: "Pendidikan",
+        content: "Ini adalah konten artikel tentang pendidikan di Indonesia.",
+      },
+      {
+        title: "Artikel 2",
+        subtitle: "Teknologi",
+        content: "Inovasi teknologi dalam pembelajaran jarak jauh.",
+      },
+      {
+        title: "Artikel 3",
+        subtitle: "Kurikulum",
+        content: "Perkembangan kurikulum pendidikan nasional.",
+      },
+      {
+        title: "Artikel 4",
+        subtitle: "Pembelajaran",
+        content: "Metode pembelajaran efektif untuk siswa.",
+      },
+      {
+        title: "Artikel 5",
+        subtitle: "Prestasi",
+        content: "Prestasi siswa dalam kompetisi nasional.",
+      },
+    ],
+  },
+);
 </script>
 
 <template>
   <div class="bg-permadi-200 dark:bg-permadi-950 py-20">
     <UContainer>
-      <div class="grid grid-cols-1 items-start justify-center gap-8 md:grid-cols-2">
-        <div class="top-24 flex w-full flex-col items-center justify-center space-y-4 md:sticky">
+      <div
+        class="grid grid-cols-1 items-start justify-center gap-8 md:grid-cols-2"
+      >
+        <div
+          class="top-24 flex w-full flex-col items-center justify-center space-y-4 md:sticky"
+        >
           <UCard class="w-full">
             <LazySvgDesigner hydrate-on-visible />
           </UCard>
           <UCard class="flex w-full flex-col space-y-2">
-            <div v-for="(education, index) in props.educationHistory" :key="index">
+            <div
+              v-for="(education, index) in props.educationHistory"
+              :key="index"
+            >
               <div class="mb-2 flex w-full items-center">
                 <h2 class="mr-2 whitespace-nowrap">
                   {{ education.level }}
@@ -98,7 +108,11 @@ const props = withDefaults(defineProps<{
             </h2>
           </UCard>
 
-          <UCard v-for="(article, index) in props.articleItems" :key="index" class="w-full">
+          <UCard
+            v-for="(article, index) in props.articleItems"
+            :key="index"
+            class="w-full"
+          >
             <div class="space-y-2">
               <div v-if="article.subtitle" class="text-sm text-gray-500">
                 <slot :name="`article-subtitle-${index}`">
@@ -115,7 +129,13 @@ const props = withDefaults(defineProps<{
                   {{ article.content }}
                 </slot>
               </p>
-              <UButton v-if="article.link" size="sm" color="primary" variant="ghost" :to="article.link">
+              <UButton
+                v-if="article.link"
+                size="sm"
+                color="primary"
+                variant="ghost"
+                :to="article.link"
+              >
                 <slot :name="`article-action-${index}`">
                   Baca Selengkapnya
                 </slot>

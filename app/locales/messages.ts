@@ -1,5 +1,5 @@
-import en_navigation from './en/navigation.json'
-import fr_navigation from './id/navigation.json'
+import en_navigation from "./en/navigation.json";
+import fr_navigation from "./id/navigation.json";
 
 // import en_contact from './en/contact.json'
 // import fr_contact from './fr/contact.json'
@@ -23,6 +23,6 @@ const messages = {
     // global: fr_global,
     // writing: fr_writing,
   },
-}
+};
 
-export default messages
+export default messages;

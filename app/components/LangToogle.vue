@@ -1,22 +1,22 @@
 <script setup lang="ts">
-const { setLocaleCookie, locales, locale } = useI18n()
+const { setLocaleCookie, locales, locale } = useI18n();
 
-const items = locales.value.map(_locale => ({
+const items = locales.value.map((_locale) => ({
   label: _locale.code,
   id: _locale.code,
   icon:
-    _locale.code === 'id' ? 'openmoji:flag-england' : 'openmoji:flag-indonesia',
-}))
+    _locale.code === "id" ? "openmoji:flag-england" : "openmoji:flag-indonesia",
+}));
 
-const value = ref(locale.value)
+const value = ref(locale.value);
 
 watch(value, (newLocale) => {
-  setLocaleCookie(newLocale)
-})
+  setLocaleCookie(newLocale);
+});
 
 const icon = computed(
-  () => items.find(item => item.id === value.value)?.icon,
-)
+  () => items.find((item) => item.id === value.value)?.icon,
+);
 </script>
 
 <template>
