@@ -16,6 +16,4 @@ function scrollToTop() {
   >
     <span class="sr-only">To Top</span>
   </UButton>
-</template>
-
-<style></style>
+</template>ç

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-const { setLocale, locale, t } = useI18n()
+const { t } = useI18n()
 
 // Menggunakan computed untuk membuat navigasi reaktif terhadap perubahan bahasa
-const navigation = [
+const navigation = computed(() => [
   {
     name: t('navigation.home'),
     to: '/',
@@ -23,7 +23,7 @@ const navigation = [
     to: '/gallery',
     icon: 'narr:gallery',
   },
-]
+])
 const route = useRoute()
 const localePath = useLocalePath()
 
@@ -36,11 +36,6 @@ function isActive(path: string): boolean {
       && route.path.startsWith(`${localizedPath}/`))
   )
 }
-
-// Watch for changes in locale and update the locale accordingly
-watch(locale, (newLocale) => {
-  setLocale(newLocale)
-})
 </script>
 
 <template>
@@ -51,31 +46,35 @@ watch(locale, (newLocale) => {
       >
         <div class="flex items-center justify-between">
           <div>
-            <NuxtLink to="/">
-              <UiLogo />
-            </NuxtLink>
+            <UTooltip :text="t('navigation.home')">
+              <NuxtLink to="/">
+                <UiLogo />
+              </NuxtLink>
+            </UTooltip>
           </div>
           <div class="flex items-center space-x-2">
             <div>
               <div class="flex items-center space-x-3">
                 <div v-for="item in navigation" :key="item.name">
-                  <UButton
-                    :id="item.name.toLowerCase()"
-                    class="ring-permadi-900 rounded ring-2"
-                    square
-                    :aria-label="`${item.name} navigation link`"
-                    :icon="item.icon as string"
-                    :to="localePath(item.to)"
-                    :class="
-                      isActive(item.to)
-                        ? 'text-permadi-900 bg-yellow-500'
-                        : 'bg-permadi-100 text-permadi-700 dark:bg-permadi-800 dark:text-permadi-50 ring-permadi-700'
-                    "
-                  >
-                    <span class="sr-only md:not-sr-only">
-                      {{ item.name }}
-                    </span>
-                  </UButton>
+                  <UTooltip :text="item.name">
+                    <UButton
+                      :id="item.name.toLowerCase()"
+                      class="ring-permadi-900 rounded ring-2"
+                      square
+                      :aria-label="`${item.name} navigation link`"
+                      :icon="item.icon as string"
+                      :to="localePath(item.to)"
+                      :class="
+                        isActive(item.to)
+                          ? 'text-permadi-900 bg-yellow-500'
+                          : 'bg-permadi-100 text-permadi-700 dark:bg-permadi-800 dark:text-permadi-50 ring-permadi-700'
+                      "
+                    >
+                      <span class="sr-only md:not-sr-only">
+                        {{ item.name }}
+                      </span>
+                    </UButton>
+                  </UTooltip>
                 </div>
               </div>
             </div>

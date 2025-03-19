@@ -1,11 +1,11 @@
-@import "tailwindcss" theme(static);
+@import 'tailwindcss' theme(static);
 
 /* Then import "@nuxt/ui": */
-@import "@nuxt/ui";
+@import '@nuxt/ui';
 
 @theme static {
-  --font-sans: "Host Grotesk", sans-serif;
-  --font-title: "Sofia Sans", sans-serif;
+  --font-sans: 'Host Grotesk', sans-serif;
+  --font-title: 'Sofia Sans', sans-serif;
 
   --breakpoint-3xl: 1920px;
 

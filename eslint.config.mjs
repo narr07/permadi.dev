@@ -1,25 +1,28 @@
-// eslint.config.mjs
-// @ts-check
+// @ts-nocheck
 import antfu from '@antfu/eslint-config'
 import withNuxt from './.nuxt/eslint.config.mjs'
 
 export default withNuxt(
   antfu({
     formatters: {
+      css: 'prettier',
+      html: true,
       markdown: false,
     },
-    stylistic: {
-      indent: 2, // 4, or 'tab'
-      quotes: 'single',
-    },
     vue: true,
-    overrides: {
-      vue: {
-        // Nonaktifkan aturan vue/no-multiple-template-root
-        'vue/no-multiple-template-root': 'off',
-        'vue/keyword-spacing': ['error', {}], // Atur spacing di sekitar keyword
-        'no-multi-spaces': 'error', // Tidak boleh ada spasi berlebih antar kata
-      },
-    },
+    stylistic: true,
+    typescript: true,
   }),
+  {
+    // Remember to specify the file glob here, otherwise it might cause the vue plugin to handle non-vue files
+    files: ['**/*.vue', '**/*.json'],
+    rules: {
+      'style/no-tabs': 'off',
+      'style/no-mixed-spaces-and-tabs': 'off',
+      '@stylistic/no-tabs': 'off',
+      '@stylistic/no-mixed-spaces-and-tabs': 'off',
+      'jsonc/no-useless-escape': 'off',
+    },
+  },
+
 )

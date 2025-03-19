@@ -1,11 +1,4 @@
 <script lang="ts" setup>
-interface EducationItem {
-  label: string
-  institution: string
-  period: string
-  icon: string
-}
-
 withDefaults(
   defineProps<{
     education?: EducationItem[]
@@ -13,32 +6,23 @@ withDefaults(
   {
     education: () => [
       {
-        label: 'SD',
-        icon: 'hugeicons:mortarboard-02',
-        institution: 'SDN TEJA I',
-        period: '2000-2006',
-      },
-      {
-        label: 'SMP',
-        icon: 'hugeicons:mortarboard-02',
-        institution: 'SMPN 1 RAJAGALUH',
-        period: '2006-2009',
-      },
-      {
-        label: 'SMA',
-        icon: 'hugeicons:mortarboard-02',
-        institution: 'SMAN 1 RAJAGALUH',
-        period: '2009-2012',
-      },
-      {
-        label: 'Universitas',
+        label: 'S1',
         icon: 'hugeicons:mortarboard-02',
         institution: 'UPI',
-        period: '2012-2016',
+        period: '2015-2021',
+        url: 'https://upi.edu/',
       },
     ],
   },
 )
+const { t } = useI18n()
+interface EducationItem {
+  label: string
+  institution: string
+  period: string
+  icon: string
+  url: string
+}
 </script>
 
 <template>
@@ -53,21 +37,16 @@ withDefaults(
           <LazySvgGuru hydrate-on-visible />
         </UCard>
         <UCard class="flex w-full flex-col space-y-2">
-          <!-- <div v-for="(education, index) in props.educationHistory" :key="index">
-            <div class="mb-2 flex w-full items-center">
-              <h2 class="mr-2 whitespace-nowrap">
-                {{ education.level }}
-              </h2>
-              <USeparator color="primary" type="dotted" class="flex-grow" />
-              <h2 class="ml-2 whitespace-nowrap">
-                {{ education.institution }}
-              </h2>
-            </div>
-          </div> -->
+          <h1>{{ t('global.edutitle') }}</h1>
+          <h2 class="sr-only">
+            {{ t('global.edutitle') }}
+          </h2>
           <UAccordion :items="education">
-            <template #body="{ item }">
-              Saya lulus {{ item.label }} pada tahun {{ item.period }} di
-              {{ item.institution }}.
+            <template #content="{ item }">
+              Saya lulusan <span>
+                <NuxtLink target="_blank" :to="`${item.url}?ref=dinarpermadiyusup`" class="border-b hover:border-dashed border-dotted">
+                  {{ item.institution }}
+                </NuxtLink> </span>.   Pada tahun {{ item.period }}
             </template>
           </UAccordion>
         </UCard>

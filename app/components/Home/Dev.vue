@@ -85,10 +85,7 @@ withDefaults(
           <LazySvgDev hydrate-on-visible />
         </UCard>
         <UCard class="flex w-full flex-col space-y-2">
-          <div
-            v-for="(education, index) in educationHistory"
-            :key="index"
-          >
+          <div v-for="(education, index) in educationHistory" :key="index">
             <UButton icon="narr-narr" />
             <div class="mb-2 flex w-full items-center">
               <h2 class="mr-2 whitespace-nowrap">
