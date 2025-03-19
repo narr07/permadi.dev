@@ -1,0 +1,27 @@
+language: node_js
+node_js:
+  - '22'
+os: osx
+dist: focal
+
+branches:
+  only:
+    - master
+    - develop
+
+install:
+  - bun install
+
+script:
+  - bun test
+
+notifications:
+  email:
+    recipients:
+      - dinarpermadi07@gmail.com
+    on_success: change
+    on_failure: always
+
+cache:
+  directories:
+    - node_modules
