@@ -14,13 +14,7 @@ const projectSchema = z.object({
   url: z.string().url(),
   github: z.object({
     repo: z.boolean().default(false),
-    src: z.string().url().optional(), // src dibuat optional terlebih dahulu
-  }).refine((data) => {
-    // Jika repo bernilai true, src harus ada
-    return data.repo ? !!data.src : true
-  }, {
-    message: 'Field "src" harus diisi jika "repo" bernilai true',
-    path: ['github', 'src'], // Menentukan lokasi error
+    src: z.string().url().optional(), // src remains optional
   }),
   image: z.object({
     src: z.string().editor({ input: 'media' }),
@@ -66,7 +60,7 @@ export default defineContentConfig({
     blog_id: defineCollection({
       type: 'page',
       source: {
-        include: 'id/blog/*.md',
+        include: 'id/article/*.md',
         prefix: '',
       },
       schema: blogSchema,
@@ -74,7 +68,7 @@ export default defineContentConfig({
     blog_en: defineCollection({
       type: 'page',
       source: {
-        include: 'en/blog/*.md',
+        include: 'en/article/*.md',
         prefix: '',
       },
       schema: blogSchema,
