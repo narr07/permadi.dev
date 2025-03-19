@@ -8,7 +8,7 @@ const slug = computed(() => withLeadingSlash(String(route.params.slug)))
 const collection = computed(() => `pages_${locale.value}` as keyof Collections)
 
 const { data: page } = await useAsyncData(
-  `page-${slug.value}`,
+  `page-${locale.value}-${slug.value}`,
   async () => {
     const content = await queryCollection(collection.value)
       .path(slug.value)
@@ -42,4 +42,8 @@ if (page.value?.seo) {
     :dir="localeProperties?.dir ?? 'ltr'"
     :value="page"
   />
+  <UContainer>
+    <DisqusComments identifier="/" />
+    <DisqusCount identifier="/" />
+  </UContainer>
 </template>

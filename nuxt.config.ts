@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     '@nuxt/scripts',
     '@vueuse/nuxt',
     '@nuxthub/core',
+    'nuxt-disqus',
   ],
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
@@ -84,6 +85,9 @@ export default defineNuxtConfig({
       openAPI: true,
     },
   },
+  disqus: {
+    shortname: 'permadi-dev',
+  },
   eslint: {
     config: {
       standalone: false,
@@ -98,12 +102,6 @@ export default defineNuxtConfig({
     defaultLocale: 'id',
     strategy: 'prefix_except_default',
     lazy: true,
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'i18n_redirected',
-      redirectOn: 'root',
-    },
-    skipSettingLocaleOnNavigate: true,
     vueI18n: '~/i18n.config.ts',
   },
   icon: {

@@ -1,17 +1,17 @@
 <script setup lang="ts">
-const { setLocaleCookie, locales, locale } = useI18n()
+const { setLocale, locales, locale } = useI18n()
 
 const items = locales.value.map(_locale => ({
   label: _locale.code,
   id: _locale.code,
   icon:
-    _locale.code === 'id' ? 'openmoji:flag-england' : 'openmoji:flag-indonesia',
+  _locale.code === 'id' ? 'openmoji:flag-england' : 'openmoji:flag-indonesia',
 }))
 
 const value = ref(locale.value)
 
 watch(value, (newLocale) => {
-  setLocaleCookie(newLocale)
+  setLocale(newLocale)
 })
 
 const icon = computed(
@@ -22,7 +22,7 @@ const icon = computed(
 <template>
   <SwitchLocalePathLink :locale="value">
     <UButton
-      class="bg-permadi-100 ring-permadi-950 text-permadi-900 dark:text-permadi-50 dark:bg-permadi-800 dark:ring-permadi-700 ring-2"
+      class="bg-white ring-2 text-yellow-500 ring-permadi-950  dark:bg-permadi-700 dark:ring-permadi-600"
       square
       :icon="icon"
       size="md"

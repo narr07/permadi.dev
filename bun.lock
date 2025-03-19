@@ -7,6 +7,7 @@
         "@nuxt/eslint": "1.2.0",
         "@nuxthub/core": "0.8.18",
         "nuxt": "^3.16.0",
+        "nuxt-disqus": "1.1.1",
         "vue": "^3.5.13",
         "vue-router": "^4.5.0",
       },
@@ -1681,6 +1682,8 @@
 
     "nuxt-component-meta": ["nuxt-component-meta@0.10.0", "", { "dependencies": { "@nuxt/kit": "^3.15.1", "citty": "^0.1.6", "mlly": "^1.7.4", "scule": "^1.3.0", "typescript": "^5.7.3", "ufo": "^1.5.4", "vue-component-meta": "^2.2.0" }, "bin": { "nuxt-component-meta": "bin/nuxt-component-meta.mjs" } }, "sha512-iq7hbSnfp4Ff/PTMYBF8pYabTQuF3u7HVN66Kb3hOnrnaPEdXEn/q6HkAn5V8UjOVSgXYpvycM0wSnwyADYNVA=="],
 
+    "nuxt-disqus": ["nuxt-disqus@1.1.1", "", { "dependencies": { "@nuxt/kit": "^3.13.0", "defu": "^6.1.4", "vue3-disqus": "^1.0.6" } }, "sha512-fQ+F0x2quDrKfXMQb9X5S8Vq7o9LdZsk87oHCiJaq/513l/TIVT+VvobWkoWuO+VEqB1G4Oo0aTmz5PFh7/cwg=="],
+
     "nypm": ["nypm@0.6.0", "", { "dependencies": { "citty": "^0.1.6", "consola": "^3.4.0", "pathe": "^2.0.3", "pkg-types": "^2.0.0", "tinyexec": "^0.3.2" }, "bin": { "nypm": "dist/cli.mjs" } }, "sha512-mn8wBFV9G9+UFHIrq+pZ2r2zL4aPau/by3kJb3cM7+5tQHMt6HGQB8FDIeKFYp8o0D2pnH6nVsO88N4AmUxIWg=="],
 
     "ofetch": ["ofetch@1.4.1", "", { "dependencies": { "destr": "^2.0.3", "node-fetch-native": "^1.6.4", "ufo": "^1.5.4" } }, "sha512-QZj2DfGplQAr2oj9KzceK9Hwz6Whxazmn85yYeVuS3u9XTMOGMRx0kO95MQ+vLsj/S/NwBDMMLU5hpxvI6Tklw=="],
@@ -2258,6 +2261,8 @@
     "vue-i18n": ["vue-i18n@10.0.6", "", { "dependencies": { "@intlify/core-base": "10.0.6", "@intlify/shared": "10.0.6", "@vue/devtools-api": "^6.5.0" }, "peerDependencies": { "vue": "^3.0.0" } }, "sha512-pQPspK5H4srzlu+47+HEY2tmiY3GyYIvSPgSBdQaYVWv7t1zj1t9p1FvHlxBXyJ17t9stG/Vxj+pykrvPWBLeQ=="],
 
     "vue-router": ["vue-router@4.5.0", "", { "dependencies": { "@vue/devtools-api": "^6.6.4" }, "peerDependencies": { "vue": "^3.2.0" } }, "sha512-HDuk+PuH5monfNuY+ct49mNmkCRK4xJAV9Ts4z9UFc4rzdDnxQLyCMGGc8pKhZhHTVzfanpNwB/lwqevcBwI4w=="],
+
+    "vue3-disqus": ["vue3-disqus@1.0.7", "", { "dependencies": { "vue": "^3.3.4" } }, "sha512-6aidR9tU9lBbB8Ib8zZ0+wQks7a9X7g7vzuqwLvcf+PKTzumxST9UbNXRf8/D2KprChf5qEnt2qtf9Bev6AMUw=="],
 
     "web-namespaces": ["web-namespaces@2.0.1", "", {}, "sha512-bKr1DkiNa2krS7qxNtdrtHAmzuYGFQLiQ13TsorsdT6ULTkPLKuu5+GsFpDlg6JFjUTwX2DyhMPG2be8uPrqsQ=="],
 
