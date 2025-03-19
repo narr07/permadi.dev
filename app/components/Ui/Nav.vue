@@ -1,43 +1,32 @@
 <script setup lang="ts">
-import type { Collections } from '@nuxt/content'
+const { t } = useI18n()
 
-const localePath = useLocalePath()
-const { locale } = useI18n()
-
-// Koleksi dinamis berdasarkan bahasa
-const collection = computed(() => `pages_${locale.value}` as keyof Collections)
-
-// Query navigasi dengan watch
-const { data: navigations } = await useAsyncData(
-  `navigation-${locale.value}`,
-  () => {
-    return queryCollectionNavigation(collection.value, ['icon'])
+// Menggunakan computed untuk membuat navigasi reaktif terhadap perubahan bahasa
+const navigation = computed(() => [
+  {
+    name: t('navigation.home'),
+    to: '/',
+    icon: 'narr:home',
   },
   {
-    watch: [locale], // Re-run query jika locale berubah
+    name: t('navigation.article'),
+    to: '/article',
+    icon: 'narr:article',
   },
-)
+  {
+    name: t('navigation.project'),
+    to: '/project',
+    icon: 'narr:project',
+  },
+  {
+    name: t('navigation.gallery'),
+    to: '/gallery',
+    icon: 'narr:gallery',
+  },
 
-// Error handling jika navigasi tidak ditemukan
-if (!navigations.value) {
-  throw createError({
-    statusCode: 404,
-    statusMessage: 'Navigation not found',
-    fatal: true,
-  })
-}
-
-// const dropdownItems = computed(() => {
-//   if (!navigations)
-//     return []
-//   return navigations.value?.map(item => ({
-//     label: item.title,
-//     icon: item.icon as string | undefined,
-//     to: item.path,
-//   }))
-// })
-
+])
 const route = useRoute()
+const localePath = useLocalePath()
 
 function isActive(path: string): boolean {
   const localizedPath = localePath(path)
@@ -64,21 +53,25 @@ function isActive(path: string): boolean {
           </div>
           <div class="flex items-center space-x-2">
             <div>
-              <div v-if="navigations" class="flex items-center space-x-3">
-                <div v-for="item in navigations" :key="item.path">
+              <div
+                class="flex items-center space-x-3"
+              >
+                <div v-for="item in navigation" :key="item.name">
                   <UButton
+                    :id="item.name.toLowerCase()"
                     class="ring-permadi-900  rounded ring-2"
                     square
+                    :aria-label="`${item.name} navigation link`"
                     :icon="item.icon as string"
-                    :to="localePath(item.path)"
+                    :to="localePath(item.to)"
                     :class="
-                      isActive(item.path)
+                      isActive(item.to)
                         ? 'text-permadi-900 bg-yellow-500'
                         : 'bg-permadi-100 text-permadi-700 dark:bg-permadi-800 dark:text-permadi-50 ring-permadi-700'
                     "
                   >
                     <span class="sr-only md:not-sr-only">
-                      {{ item.title }}
+                      {{ item.name }}
                     </span>
                   </UButton>
                 </div>

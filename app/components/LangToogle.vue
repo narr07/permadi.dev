@@ -1,36 +1,36 @@
 <script setup lang="ts">
-const { setLocale, locales, locale } = useI18n()
+const { locale: current, setLocaleCookie, locales } = useI18n()
 
-const items = locales.value.map(_locale => ({
-  label: _locale.code,
-  id: _locale.code,
-  icon:
-    _locale.code === 'id' ? 'openmoji:flag-england' : 'openmoji:flag-indonesia',
-}))
-
-const value = ref(locale.value)
-
-watch(value, (newLocale) => {
-  setLocale(newLocale)
+const currentLocale = computed(() => {
+  return locales.value.find(locale => locale.code === current.value)
 })
 
-const icon = computed(
-  () => items.find(item => item.id === value.value)?.icon,
-)
+watch(current, (newLocale) => {
+  setLocaleCookie(newLocale)
+})
+
+const switchLocalePath = useSwitchLocalePath()
 </script>
 
 <template>
-  <SwitchLocalePathLink :locale="value">
-    <UButton
-      class="bg-permadi-100 ring-2 ring-permadi-950 text-permadi-900 dark:text-permadi-50 dark:bg-permadi-800 dark:ring-permadi-700"
-      square
-      :icon="icon"
-      size="md"
-      @click="value = value === 'en' ? 'id' : 'en'"
-    >
-      <span class="sr-only">
-        {{ value === "en" ? "English" : "Indonesia" }}
-      </span>
-    </UButton>
-  </SwitchLocalePathLink>
+  <div class="z-99 flex items-center gap-3 rounded-lg border border-white/10 bg-zinc-900/90 px-3 py-1 backdrop-blur-xl dark:bg-permadi-800 dark:border-permadi-700">
+    <ClientOnly>
+      <NuxtLink
+        v-for="locale in locales"
+        :key="locale.code"
+        class="cursor-pointer select-none"
+        :to="switchLocalePath(locale.code)"
+      >
+        <span
+          class="font-semibold"
+          :class="locale.code === currentLocale?.code ? 'text-white' : 'text-neutral-500 dark:text-permadi-400'"
+        >
+          {{ locale.code }}
+        </span>
+      </NuxtLink>
+      <template #fallback>
+        <div class="h-2 w-5" />
+      </template>
+    </ClientOnly>
+  </div>
 </template>

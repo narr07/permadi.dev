@@ -98,6 +98,12 @@ export default defineNuxtConfig({
     defaultLocale: 'id',
     strategy: 'prefix_except_default',
     lazy: true,
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root',
+    },
+    skipSettingLocaleOnNavigate: true,
     vueI18n: '~/i18n.config.ts',
   },
   icon: {
