@@ -8,14 +8,11 @@ const slug = computed(() => withLeadingSlash(String(route.params.slug)))
 const collection = computed(() => `pages_${locale.value}` as keyof Collections)
 
 const { data: page } = await useAsyncData(
-  `page-${locale.value}-${slug.value}`,
+  `page-${slug.value}`,
   async () => {
     const content = await queryCollection(collection.value)
       .path(slug.value)
       .first()
-
-    // Possibly fallback to default locale if content is missing in non-default locale
-
     return content
   },
   {
@@ -31,9 +28,10 @@ if (!page.value) {
   })
 }
 
-if (page.value?.seo) {
-  useSeoMeta(page.value.seo)
-}
+useSeoMeta({
+  title: page.value.title,
+  description: page.value.description,
+})
 </script>
 
 <template>

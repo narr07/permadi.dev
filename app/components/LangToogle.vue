@@ -21,16 +21,18 @@ const icon = computed(
 
 <template>
   <SwitchLocalePathLink :locale="value">
-    <UButton
-      class="bg-white ring-2 text-yellow-500 ring-permadi-950  dark:bg-permadi-700 dark:ring-permadi-600"
-      square
-      :icon="icon"
-      size="md"
-      @click="value = value === 'en' ? 'id' : 'en'"
-    >
-      <span class="sr-only">
-        {{ value === "en" ? "English" : "Indonesia" }}
-      </span>
-    </UButton>
+    <ClientOnly>
+      <UButton
+        class="bg-permadi-100 ring-2 text-yellow-500 ring-permadi-950  dark:bg-permadi-700 dark:ring-permadi-600"
+        square
+        :icon="icon"
+        size="md"
+        @click="value = value === 'en' ? 'id' : 'en'"
+      >
+        <span class="sr-only">
+          {{ value === "en" ? "English" : "Indonesia" }}
+        </span>
+      </UButton>
+    </ClientOnly>
   </SwitchLocalePathLink>
 </template>

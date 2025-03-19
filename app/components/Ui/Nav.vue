@@ -1,8 +1,8 @@
 <script setup lang="ts">
-const { t } = useI18n()
+const { setLocale, locale, t } = useI18n()
 
 // Menggunakan computed untuk membuat navigasi reaktif terhadap perubahan bahasa
-const navigation = computed(() => [
+const navigation = [
   {
     name: t('navigation.home'),
     to: '/',
@@ -23,7 +23,7 @@ const navigation = computed(() => [
     to: '/gallery',
     icon: 'narr:gallery',
   },
-])
+]
 const route = useRoute()
 const localePath = useLocalePath()
 
@@ -36,6 +36,11 @@ function isActive(path: string): boolean {
       && route.path.startsWith(`${localizedPath}/`))
   )
 }
+
+// Watch for changes in locale and update the locale accordingly
+watch(locale, (newLocale) => {
+  setLocale(newLocale)
+})
 </script>
 
 <template>
