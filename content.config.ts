@@ -1,26 +1,5 @@
 import { defineCollection, defineContentConfig, z } from '@nuxt/content'
 
-const blogSchema = z.object({
-  title: z.string(),
-  description: z.string(),
-  date: z.date(),
-  tags: z.array(z.string()),
-  category: z.enum(['Education', 'Design', 'Programmer']).optional(),
-})
-
-const projectSchema = z.object({
-  title: z.string(),
-  description: z.string(),
-  url: z.string().url(),
-  github: z.object({
-    repo: z.boolean().default(false),
-    src: z.string().url().optional(), // src remains optional
-  }),
-  image: z.object({
-    src: z.string().editor({ input: 'media' }),
-  }),
-})
-
 // const gallerySchema = z.object({
 //   title: z.string(),
 //   tools: z.object({
@@ -63,7 +42,13 @@ export default defineContentConfig({
         include: 'id/article/*.md',
         prefix: '',
       },
-      schema: blogSchema,
+      schema: z.object({
+        title: z.string(),
+        description: z.string(),
+        date: z.date(),
+        tags: z.array(z.string()),
+        category: z.enum(['Education', 'Design', 'Programmer']).optional(),
+      }),
     }),
     blog_en: defineCollection({
       type: 'page',
@@ -71,7 +56,13 @@ export default defineContentConfig({
         include: 'en/article/*.md',
         prefix: '',
       },
-      schema: blogSchema,
+      schema: z.object({
+        title: z.string(),
+        description: z.string(),
+        date: z.date(),
+        tags: z.array(z.string()),
+        category: z.enum(['Education', 'Design', 'Programmer']).optional(),
+      }),
     }),
     projects_id: defineCollection({
       type: 'data',
@@ -79,7 +70,18 @@ export default defineContentConfig({
         include: 'id/projects/*.yml',
         prefix: '',
       },
-      schema: projectSchema,
+      schema: z.object({
+        title: z.string(),
+        description: z.string(),
+        url: z.string().url(),
+        github: z.object({
+          repo: z.boolean().default(false),
+          src: z.string().url().optional(), // src remains optional
+        }),
+        image: z.object({
+          src: z.string().editor({ input: 'media' }),
+        }),
+      }),
     }),
     projects_en: defineCollection({
       type: 'data',
@@ -87,7 +89,18 @@ export default defineContentConfig({
         include: 'en/projects/*.yml',
         prefix: '',
       },
-      schema: projectSchema,
+      schema: z.object({
+        title: z.string(),
+        description: z.string(),
+        url: z.string().url(),
+        github: z.object({
+          repo: z.boolean().default(false),
+          src: z.string().url().optional(), // src remains optional
+        }),
+        image: z.object({
+          src: z.string().editor({ input: 'media' }),
+        }),
+      }),
     }),
   },
 })
