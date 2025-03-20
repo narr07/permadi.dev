@@ -87,9 +87,9 @@ useSeoMeta({
       </div>
 
       <!-- Tags -->
-      <!-- <div class="py-4">
+      <div class="py-4">
         <Tags />
-      </div> -->
+      </div>
 
       <!-- Article List -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 ">
@@ -126,7 +126,7 @@ useSeoMeta({
                     {{ formatDate(post.date, locale) }}
                   </p>
                   <div v-if="post.tags && post.tags.length > 0" class="mr-2">
-                    <UButton
+                    <!-- <UButton
                       :to="localePath(`/blog/tags/${post.tags[0]}`)"
                       color="neutral"
                       :aria-label="`Lihat artikel dengan tag ${post.tags[0]}`"
@@ -135,7 +135,7 @@ useSeoMeta({
                       <p class="text-xs">
                         {{ post.tags[0] }}
                       </p>
-                    </UButton>
+                    </UButton> -->
                   </div>
                 </div>
               </div>
