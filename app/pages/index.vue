@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 import type { Collections } from '@nuxt/content'
 import { withLeadingSlash } from 'ufo'
 
@@ -32,12 +32,20 @@ useSeoMeta({
   title: page.value.title,
   description: page.value.description,
 })
-</script>
-
+</script> -->
+<!--
 <template>
   <ContentRenderer
     v-if="page"
     :dir="localeProperties?.dir ?? 'ltr'"
     :value="page"
   />
+</template> -->
+
+<template>
+  <UContainer>
+    <UCard>
+      Ini Home
+    </UCard>
+  </UContainer>
 </template>

@@ -10,17 +10,17 @@ const navigation = computed(() => [
   },
   {
     name: t('navigation.article'),
-    to: '/article',
+    to: '/artikel',
     icon: 'narr:article',
   },
   {
     name: t('navigation.project'),
-    to: '/project',
+    to: '/proyek',
     icon: 'narr:project',
   },
   {
     name: t('navigation.gallery'),
-    to: '/gallery',
+    to: '/galeri',
     icon: 'narr:gallery',
   },
 ])

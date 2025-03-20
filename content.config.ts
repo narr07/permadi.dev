@@ -23,6 +23,23 @@ export default defineContentConfig({
       schema: z.object({
         title: z.string(),
         description: z.string(),
+        seo: z.intersection(
+          z.object({
+            title: z.string().optional(),
+            description: z.string().optional(),
+            meta: z.array(z.record(z.string(), z.any())).optional(),
+            link: z.array(z.record(z.string(), z.any())).optional(),
+          }),
+          z.record(z.string(), z.any()),
+        ).optional().default({}).editor({ hidden: true }),
+        navigation: z.union([
+          z.boolean(),
+          z.object({
+            title: z.string(),
+            description: z.string(),
+            icon: z.string(),
+          }),
+        ]).default(true).editor({ hidden: true }),
       }),
     }),
     pages_en: defineCollection({
@@ -34,6 +51,23 @@ export default defineContentConfig({
       schema: z.object({
         title: z.string(),
         description: z.string(),
+        seo: z.intersection(
+          z.object({
+            title: z.string().optional(),
+            description: z.string().optional(),
+            meta: z.array(z.record(z.string(), z.any())).optional(),
+            link: z.array(z.record(z.string(), z.any())).optional(),
+          }),
+          z.record(z.string(), z.any()),
+        ).optional().default({}).editor({ hidden: true }),
+        navigation: z.union([
+          z.boolean(),
+          z.object({
+            title: z.string(),
+            description: z.string(),
+            icon: z.string(),
+          }),
+        ]).default(true).editor({ hidden: true }),
       }),
     }),
     blog_id: defineCollection({
@@ -45,9 +79,27 @@ export default defineContentConfig({
       schema: z.object({
         title: z.string(),
         description: z.string(),
+        slugs: z.string(),
         date: z.date(),
         tags: z.array(z.string()),
         category: z.enum(['Education', 'Design', 'Programmer']).optional(),
+        seo: z.intersection(
+          z.object({
+            title: z.string().optional(),
+            description: z.string().optional(),
+            meta: z.array(z.record(z.string(), z.any())).optional(),
+            link: z.array(z.record(z.string(), z.any())).optional(),
+          }),
+          z.record(z.string(), z.any()),
+        ).optional().default({}).editor({ hidden: true }),
+        navigation: z.union([
+          z.boolean(),
+          z.object({
+            title: z.string(),
+            description: z.string(),
+            icon: z.string(),
+          }),
+        ]).default(true).editor({ hidden: true }),
       }),
     }),
     blog_en: defineCollection({
@@ -59,9 +111,27 @@ export default defineContentConfig({
       schema: z.object({
         title: z.string(),
         description: z.string(),
+        slugs: z.string(),
         date: z.date(),
         tags: z.array(z.string()),
         category: z.enum(['Education', 'Design', 'Programmer']).optional(),
+        seo: z.intersection(
+          z.object({
+            title: z.string().optional(),
+            description: z.string().optional(),
+            meta: z.array(z.record(z.string(), z.any())).optional(),
+            link: z.array(z.record(z.string(), z.any())).optional(),
+          }),
+          z.record(z.string(), z.any()),
+        ).optional().default({}).editor({ hidden: true }),
+        navigation: z.union([
+          z.boolean(),
+          z.object({
+            title: z.string(),
+            description: z.string(),
+            icon: z.string(),
+          }),
+        ]).default(true).editor({ hidden: true }),
       }),
     }),
     projects_id: defineCollection({
@@ -81,6 +151,23 @@ export default defineContentConfig({
         image: z.object({
           src: z.string().editor({ input: 'media' }),
         }),
+        seo: z.intersection(
+          z.object({
+            title: z.string().optional(),
+            description: z.string().optional(),
+            meta: z.array(z.record(z.string(), z.any())).optional(),
+            link: z.array(z.record(z.string(), z.any())).optional(),
+          }),
+          z.record(z.string(), z.any()),
+        ).optional().default({}).editor({ hidden: true }),
+        navigation: z.union([
+          z.boolean(),
+          z.object({
+            title: z.string(),
+            description: z.string(),
+            icon: z.string(),
+          }),
+        ]).default(true).editor({ hidden: true }),
       }),
     }),
     projects_en: defineCollection({
@@ -100,6 +187,23 @@ export default defineContentConfig({
         image: z.object({
           src: z.string().editor({ input: 'media' }),
         }),
+        seo: z.intersection(
+          z.object({
+            title: z.string().optional(),
+            description: z.string().optional(),
+            meta: z.array(z.record(z.string(), z.any())).optional(),
+            link: z.array(z.record(z.string(), z.any())).optional(),
+          }),
+          z.record(z.string(), z.any()),
+        ).optional().default({}).editor({ hidden: true }),
+        navigation: z.union([
+          z.boolean(),
+          z.object({
+            title: z.string(),
+            description: z.string(),
+            icon: z.string(),
+          }),
+        ]).default(true).editor({ hidden: true }),
       }),
     }),
   },

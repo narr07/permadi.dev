@@ -108,6 +108,14 @@ export default defineNuxtConfig({
     lazy: true,
     vueI18n: '~/i18n.config.ts',
     customRoutes: 'config',
+    pages: {
+      'artikel': {
+        en: '/article',
+      },
+      'artikel-slug': {
+        en: '/article/[slug]',
+      },
+    },
   },
   icon: {
     customCollections: [

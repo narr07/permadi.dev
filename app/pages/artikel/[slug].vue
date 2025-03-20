@@ -10,9 +10,9 @@ const route = useRoute()
 const slug = computed(() => withLeadingSlash(String(route.params.slug)))
 
 // Ambil data artikel saat ini
-const { data: pageBlog } = await useAsyncData(`blogPage-${locale.value}-${slug.value}`, async () => {
+const { data: pageBlog } = await useAsyncData(`blogPage-${locale.value}`, async () => {
   const collection = (`blog_${locale.value}`) as keyof Collections
-  const content = await queryCollection(collection).path(slug.value).first()
+  const content = await queryCollection(collection).first()
   if (!content)
     throw new Error('Content not found')
   return content
@@ -39,11 +39,17 @@ useSeoMeta({
   twitterLabel2: 'Read Time',
 
 })
+const setI18nParams = useSetI18nParams()
+setI18nParams({
+  en: { slug: pageBlog.value?.slugs },
+  id: { slug: pageBlog.value?.slugs },
+})
 </script>
 
 <template>
   <UContainer>
     <UCard class="mb-2">
+      {{ pageBlog }}
       <div v-if="pageBlog" :value="pageBlog">
         <h1 class="text-g3">
           {{ pageBlog.title }}
@@ -58,9 +64,9 @@ useSeoMeta({
         <ContentRenderer v-if="pageBlog" :value="pageBlog" />
       </div>
     </UCard>
-    <UCard>
-      <DisqusComments :identifier="slug" />
-    </UCard>
+    <!-- <UCard>
+      <DisqusComments :identifier="pageBlog?.path" />
+    </UCard> -->
   </UContainer>
 </template>
 
