@@ -37,11 +37,11 @@ const tags = computed<string[]>(() => {
 const selectedTag = ref('')
 
 // Fungsi untuk menangani pemilihan tag
-function handleTagSelect(tag: string) {
-  if (tag) {
-    router.push(localePath(`/blog/tags/${tag}`))
-  }
-}
+// function handleTagSelect(tag: string) {
+//   if (tag) {
+//     router.push(localePath(`/blog/tags/${tag}`))
+//   }
+// }
 </script>
 
 <template>
@@ -58,7 +58,7 @@ function handleTagSelect(tag: string) {
       selected-icon="ph:hand-swipe-left-duotone"
       :placeholder="t('blog.tags')"
       class="w-32"
-      @update:model-value="handleTagSelect"
     />
+    <!-- @update:model-value="handleTagSelect" -->
   </div>
 </template>
