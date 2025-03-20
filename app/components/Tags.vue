@@ -8,7 +8,10 @@ const router = useRouter()
 const { data: blogs } = await useAsyncData(
   route.path,
   () => {
-    return queryCollection(`blog_${locale.value}`).order('date', 'DESC').all()
+    return queryCollection(`blog_${locale.value}`)
+      .select('title', 'tags')
+      .order('date', 'DESC')
+      .all()
   },
   {
     watch: [locale],
@@ -43,7 +46,7 @@ function handleTagSelect(tag: string) {
 
 <template>
   <div class="flex w-full items-center justify-end">
-    <USelectMenu
+    <USelect
       v-model="selectedTag"
       :ui="{
         trailingIcon:

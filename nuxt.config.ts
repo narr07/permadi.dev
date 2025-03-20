@@ -107,6 +107,7 @@ export default defineNuxtConfig({
     strategy: 'prefix_except_default',
     lazy: true,
     vueI18n: '~/i18n.config.ts',
+    customRoutes: 'config',
   },
   icon: {
     customCollections: [

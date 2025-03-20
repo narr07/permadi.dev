@@ -1,3 +1,4 @@
+// app/components/LangToogle.vue
 <script setup lang="ts">
 const { setLocale, locales, locale } = useI18n()
 

@@ -2,7 +2,8 @@
 
 /* Then import "@nuxt/ui": */
 @import '@nuxt/ui';
-
+@config "../../tailwind.config.ts";
+@plugin "@tailwindcss/typography";
 @theme static {
   --font-sans: 'Host Grotesk', sans-serif;
   --font-title: 'Sofia Sans', sans-serif;
@@ -93,6 +94,68 @@
   --color-purple-950: #361f56;
 }
 
+
+.button {
+  @apply ring-1 ring-permadi-900 dark:bg-permadi-900 dark:text-permadi-50 dark:hover:bg-permadi-800 hover:ring-2 bg-white text-permadi-900 stroke-2 rounded hover:bg-permadi-100 dark:ring-permadi-700;
+}
+
+:root {
+  --ui-bg-inverted: var(--ui-color-neutral-700);
+}
+.dark {
+  --ui-bg-inverted: var(--ui-color-neutral-300);
+}
+
+.dark ::selection {
+  @apply bg-red-500 text-blue-900;
+}
+::selection {
+  @apply bg-blue-900 text-blue-400;
+}
+
+html {
+  scroll-behavior: smooth; /* or 'auto' if you prefer instant scrolling */
+}
+
 body {
-  @apply bg-permadi-100 dark:bg-permadi-950;
+  @apply bg-permadi-100 dark:text-permadi-200 text-permadi-800 leading-tight dark:bg-permadi-950 tracking-wide font-sans text-[16px];
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-title font-black   dark:text-yellow-500 text-permadi-800;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-permadi-300);
+  border-radius: 6px;
+  border: 1px solid var(--color-permadi-950);
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-permadi-400);
+}
+::-webkit-scrollbar-corner {
+  background-color: var(--color-permadi-100);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: var(--color-permadi-700);
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-permadi-600);
+}
+.dark ::-webkit-scrollbar-corner {
+  background-color: var(--color-permadi-800);
+}
+
+.button {
+  @apply ring-1 ring-permadi-900 dark:bg-permadi-900 dark:text-permadi-50 dark:hover:bg-permadi-800 hover:ring-2 bg-white text-permadi-900 stroke-2 rounded hover:bg-permadi-100 dark:ring-permadi-900;
 }
