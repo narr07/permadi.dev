@@ -17,7 +17,11 @@ export default defineNuxtConfig({
   content: {
     preview: {
       api: 'https://api.nuxt.studio',
-      dev: true,
+      gitInfo: {
+        name: 'permadi.dev',
+        owner: 'narr07',
+        url: 'https://github.com/narr07/permadi.dev',
+      },
     },
     database: {
       type: 'd1',
