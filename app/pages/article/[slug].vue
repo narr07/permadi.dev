@@ -3,9 +3,7 @@ import type { Collections } from '@nuxt/content'
 import { queryCollection, useRoute } from '#imports'
 import { withLeadingSlash } from 'ufo'
 
-const { t } = useI18n()
 const { locale } = useI18n()
-const localePath = useLocalePath()
 
 // Ambil rute sekali saat inisialisasi
 const route = useRoute()
@@ -27,13 +25,11 @@ useSeoMeta({
   description: pageBlog.value?.description,
   ogTitle: pageBlog.value?.title,
   ogDescription: pageBlog.value?.description,
-  keywords: pageBlog.value?.tags
-    ? pageBlog.value.tags.join(', ')
-    : 'dinar, permadi, dinar permadi, guru, developer, programmer',
+  keywords: 'dinar, permadi, dinar permadi, guru, developer, programmer',
   author: 'Dinar Permadi Yusup',
   articleAuthor: ['Dinar Permadi Yusup'],
   articleSection: () => pageBlog.value?.title,
-  articleTag: () => pageBlog.value?.tags,
+  articleTag: () => ['dinar', 'permadi', 'dinar permadi', 'guru', 'developer', 'programmer'],
   ogType: 'article',
   twitterTitle: () => pageBlog.value?.title,
   twitterDescription: () => pageBlog.value?.description,

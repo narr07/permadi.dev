@@ -19,7 +19,6 @@ if (!listBlog.value)
   <UContainer>
     <NuxtLink v-for="blog in listBlog" :key="blog.path" :to="localePath(`/article${blog.path}`)">
       <UCard>
-        <pre>{{ blog }}</pre>
         <h2>{{ blog.title }}</h2>
         <p>{{ blog.description }}</p>
       </UCard>
