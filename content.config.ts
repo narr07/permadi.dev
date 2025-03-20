@@ -67,7 +67,7 @@ export default defineContentConfig({
     projects_id: defineCollection({
       type: 'data',
       source: {
-        include: 'id/projects/*.yml',
+        include: 'id/project/*.yml',
         prefix: '',
       },
       schema: z.object({
@@ -86,7 +86,7 @@ export default defineContentConfig({
     projects_en: defineCollection({
       type: 'data',
       source: {
-        include: 'en/projects/*.yml',
+        include: 'en/project/*.yml',
         prefix: '',
       },
       schema: z.object({
