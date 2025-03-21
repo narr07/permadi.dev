@@ -14,6 +14,7 @@ const { data: page } = await useAsyncData(`page-blog${slug.value}`, async () => 
 
   return content
 }, {
+  server: false,
   watch: [locale],
 })
 
