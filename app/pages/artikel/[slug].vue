@@ -5,7 +5,7 @@ const route = useRoute()
 const { locale, localeProperties } = useI18n()
 
 // First try to find article in current locale directly
-const { data: page } = await useAsyncData(`page-blog-${locale.value}-${route.params.slug}`, async () => {
+const { data: page, refresh } = await useAsyncData(`page-blog-${route.params.slug}`, async () => {
   const collection = (`blog_${locale.value}`) as keyof Collections
 
   // Try to find by direct path match first
@@ -23,8 +23,11 @@ const { data: page } = await useAsyncData(`page-blog-${locale.value}-${route.par
   }
 
   return content
-}, {
-  watch: [locale],
+})
+
+// Watch locale changes and refresh data when it changes
+watch(locale, async () => {
+  await refresh()
 })
 
 if (!page.value) {

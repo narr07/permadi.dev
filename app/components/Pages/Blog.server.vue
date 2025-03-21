@@ -7,7 +7,6 @@ const router = useRouter()
 const { locale, t } = useI18n()
 
 const localePath = useLocalePath()
-const { calculateReadingTime, formatReadingTime } = useReadingTime()
 
 // Pagination state
 const itemsPerPage = 10
@@ -27,7 +26,7 @@ const { data: listBlog } = await useAsyncData(
   `listBlog-${locale.value}`,
   async () => {
     return (await queryCollection(`blog_${locale.value}`)
-      .select('title', 'description', 'path', 'date', 'tags', 'id_slug', 'en_slug', 'body')
+      .select('title', 'description', 'path', 'date', 'tags', 'id_slug', 'en_slug')
       .order('date', 'DESC')
       .all()) as Collections['blog_id'][] | Collections['blog_en'][]
   },
@@ -54,7 +53,6 @@ const postsWithFormattedDate = computed(() =>
   paginatedBlogs.value.map(post => ({
     ...post,
     date: new Date(post.date), // Convert date to Date object
-    readingTime: calculateReadingTime(post.body),
   })),
 )
 
@@ -77,7 +75,7 @@ useSeoMeta({
 //   description: t('website.description'),
 // })
 function getSlug(post: Collections['blog_id'] | Collections['blog_en']) {
-  return locale.value === 'en' ? post.en_slug : post.id_slug
+  return locale.value === 'id' ? post.id_slug : post.en_slug
 }
 </script>
 
@@ -121,12 +119,12 @@ function getSlug(post: Collections['blog_id'] | Collections['blog_en']) {
                 </div>
 
                 <!-- Reading Time -->
-                <div class="pt-2">
+                <!-- <div class="pt-2">
                   <p class="flex items-center gap-1 text-xs">
                     <UIcon name="ph:timer-duotone" class="h-4 w-4" />
                     {{ formatReadingTime(post.readingTime) }}
                   </p>
-                </div>
+                </div> -->
 
                 <!-- Date and Tag -->
                 <div class="flex h-full items-end justify-between">
