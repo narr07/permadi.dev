@@ -1,83 +1,37 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { Collections } from '@nuxt/content'
 import { withLeadingSlash } from 'ufo'
 
-const { locale } = useI18n()
-
-// Ensure pageBlog is typed correctly
-
 const route = useRoute()
+const { locale, localeProperties } = useI18n()
 const slug = computed(() => withLeadingSlash(String(route.params.slug)))
 
-// Ambil data artikel saat ini
-const { data: pageBlog } = await useAsyncData(
-  `blogPage-${locale.value}-${route}`,
-  async () => {
-    const collection = `blog_${locale.value}` as keyof Collections
-    const content = await queryCollection(collection).first()
-    if (!content)
-      throw new Error('Content not found')
-    return content
-  },
-  {
-    watch: [locale, slug], // Pastikan slug juga dipantau
-  },
-)
+const { data: page } = await useAsyncData(`page-blog${slug.value}`, async () => {
+  const collection = (`blog_${locale.value}`) as keyof Collections
+  const content = await queryCollection(collection).path(slug.value).first()
 
-useSeoMeta({
-  title: pageBlog.value?.title,
-  description: pageBlog.value?.description,
-  ogTitle: pageBlog.value?.title,
-  ogDescription: pageBlog.value?.description,
-  keywords: 'dinar, permadi, dinar permadi, guru, developer, programmer',
-  author: 'Dinar Permadi Yusup',
-  articleAuthor: ['Dinar Permadi Yusup'],
-  articleSection: () => pageBlog.value?.title,
-  articleTag: () => [
-    'dinar',
-    'permadi',
-    'dinar permadi',
-    'guru',
-    'developer',
-    'programmer',
-  ],
-  ogType: 'article',
-  twitterTitle: () => pageBlog.value?.title,
-  twitterDescription: () => pageBlog.value?.description,
-  twitterData1: 'Dinar Permadi Yusup',
-  twitterLabel1: 'Author',
-  // twitterData2: () => formatReadingTime(calculateReadingTime(pageBlog.value?.body)),
-  twitterLabel2: 'Read Time',
+  // Possibly fallback to default locale if content is missing in non-default locale
+
+  return content
+}, {
+  watch: [locale],
 })
+
+if (!page.value) {
+  throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
+}
+
 const setI18nParams = useSetI18nParams()
 setI18nParams({
-  en: { slug: pageBlog.value?.slugs },
-  id: { slug: pageBlog.value?.slugs },
+  id: { slug: page.slugs }, // slug: 'rode-mok'
+  en: { slug: page.slugs }, // slug: 'red-mug'
 })
 </script>
 
 <template>
-  <UContainer>
-    {{ slug }}
-    <UCard class="mb-2">
-      <div v-if="pageBlog" :value="pageBlog">
-        <h1 class="text-g3">
-          {{ pageBlog.title }}
-        </h1>
-      </div>
-      <p>
-        {{ pageBlog?.description }}
-      </p>
-    </UCard>
-    <UCard>
-      <div
-        class="prose dark:prose-invert prose-sm prose-permadi mx-auto max-w-6xl overflow-y-hidden"
-      >
-        <ContentRenderer v-if="pageBlog" :value="pageBlog" />
-      </div>
-    </UCard>
-    <!-- <UCard>
-      <DisqusComments :identifier="pageBlog?.path" />
-    </UCard> -->
-  </UContainer>
+  <ContentRenderer
+    v-if="page"
+    :dir="localeProperties?.dir ?? 'ltr'"
+    :value="page"
+  />
 </template>

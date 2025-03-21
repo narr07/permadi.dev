@@ -96,7 +96,7 @@ useSeoMeta({
 
       <!-- Article List -->
       <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <div v-for="post in postsWithFormattedDate" :key="post.id">
+        <div v-for="post in postsWithFormattedDate" :key="post.path">
           <NuxtLink
             :aria-label="`${t('article.read')} ${post.title}`"
             :title="`${t('article.read')} ${post.title}`"
