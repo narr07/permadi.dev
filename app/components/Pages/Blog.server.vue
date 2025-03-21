@@ -26,9 +26,8 @@ watch(currentPage, (newPage) => {
 const { data: listBlog } = await useAsyncData(
   `listBlog-${locale.value}`,
   async () => {
-    const collection = `blog_${locale.value}` as keyof Collections
-    return (await queryCollection(collection)
-      .select('id', 'title', 'description', 'path', 'date', 'tags', 'id_slug', 'en_slug', 'body')
+    return (await queryCollection(`blog_${locale.value}`)
+      .select('title', 'description', 'path', 'date', 'tags', 'id_slug', 'en_slug', 'body')
       .order('date', 'DESC')
       .all()) as Collections['blog_id'][] | Collections['blog_en'][]
   },
@@ -77,7 +76,7 @@ useSeoMeta({
 //   title: t('website.blog'),
 //   description: t('website.description'),
 // })
-function getSlug(post) {
+function getSlug(post: Collections['blog_id'] | Collections['blog_en']) {
   return locale.value === 'en' ? post.en_slug : post.id_slug
 }
 </script>
