@@ -83,11 +83,6 @@ function getSlug(post: Collections['blog_id'] | Collections['blog_en']) {
   <div>
     <UContainer>
       <!-- Title -->
-      <div class="pb-4 pt-8">
-        <h1 class="text-g3 md:text-g4 font-bold">
-          {{ t("blog.title") }}
-        </h1>
-      </div>
 
       <!-- Tags -->
       <!-- <div class="py-4">

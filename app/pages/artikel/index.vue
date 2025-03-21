@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Collections } from '@nuxt/content'
+import { UContainer } from '#components'
 
 const { locale, localeProperties } = useI18n()
 
@@ -33,11 +34,18 @@ useSeoMeta({
 </script>
 
 <template>
-  <ContentRenderer
-    v-if="page"
-    :dir="localeProperties?.dir ?? 'ltr'"
-    :value="page"
-  />
+  <UContainer>
+    <div class="pb-4 pt-8">
+      <h1 class="text-g3 md:text-g4 font-bold">
+        {{ page?.title }}
+      </h1>
+    </div>
+    <ContentRenderer
+      v-if="page"
+      :dir="localeProperties?.dir ?? 'ltr'"
+      :value="page"
+    />
+  </UContainer>
 </template>
 <!--
 <template>
