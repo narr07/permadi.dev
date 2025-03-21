@@ -26,6 +26,10 @@ setI18nParams({
   id: { slug: page.slugs }, // slug: 'rode-mok'
   en: { slug: page.slugs }, // slug: 'red-mug'
 })
+
+const switchLocalePath = useSwitchLocalePath()
+switchLocalePath('id') // /products/red-mug
+switchLocalePath('en') // /nl/products/rode-mok
 </script>
 
 <template>
