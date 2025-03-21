@@ -1,3 +1,4 @@
+// app/pages/index.vue
 <script setup lang="ts">
 import type { Collections } from '@nuxt/content'
 import { withLeadingSlash } from 'ufo'
@@ -10,7 +11,7 @@ const collection = computed(() => `pages_${locale.value}` as keyof Collections)
 const { data: page } = await useAsyncData(
   `page-${slug.value}`,
   async () => {
-    const content = await queryCollection(collection.value).path('/').first()
+    const content = await queryCollection(collection.value).path('/home').first()
     return content
   },
   {
