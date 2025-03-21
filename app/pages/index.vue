@@ -1,4 +1,4 @@
-<!-- <script setup lang="ts">
+<script setup lang="ts">
 import type { Collections } from '@nuxt/content'
 import { withLeadingSlash } from 'ufo'
 
@@ -10,9 +10,7 @@ const collection = computed(() => `pages_${locale.value}` as keyof Collections)
 const { data: page } = await useAsyncData(
   `page-${slug.value}`,
   async () => {
-    const content = await queryCollection(collection.value)
-      .path(slug.value)
-      .first()
+    const content = await queryCollection(collection.value).path('/').first()
     return content
   },
   {
@@ -32,20 +30,20 @@ useSeoMeta({
   title: page.value.title,
   description: page.value.description,
 })
-</script> -->
-<!--
+</script>
+
 <template>
   <ContentRenderer
     v-if="page"
     :dir="localeProperties?.dir ?? 'ltr'"
     :value="page"
   />
-</template> -->
-
+</template>
+<!--
 <template>
   <UContainer>
     <UCard>
       Ini Home
     </UCard>
   </UContainer>
-</template>
+</template> -->

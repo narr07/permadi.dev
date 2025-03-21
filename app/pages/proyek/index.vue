@@ -11,7 +11,7 @@ const { data: page } = await useAsyncData(
   `page-${slug.value}`,
   async () => {
     const content = await queryCollection(collection.value)
-      .path('/article')
+      .path('/project')
       .first()
     return content
   },

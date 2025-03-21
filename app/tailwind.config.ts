@@ -1,7 +1,6 @@
 import type { Config } from 'tailwindcss'
 
 export default <Partial<Config>>{
-
   theme: {
     dropShadow: {
       '1': '2px 2px 0px rgba(2, 50, 48, 1)',
@@ -12,41 +11,60 @@ export default <Partial<Config>>{
       '3gelap': '6px 6px 0px rgba(0, 0, 0, 1)',
     },
     extend: {
-
       fontSize: {
         // Golden ratio dengan clamp untuk responsive dan performa
-        g0: ['clamp(0.5rem, 0.618vw, 0.618rem)', {
-          lineHeight: '1.2',
-          letterSpacing: '-0.01em',
-        }],
-        g1: ['clamp(0.8rem, 1vw, 1rem)', {
-          lineHeight: '1.5',
-          letterSpacing: '-0.01em',
-        }],
-        g2: ['clamp(1.2rem, 1.618vw, 1.618rem)', {
-          lineHeight: '1.4',
-          letterSpacing: '-0.015em',
-        }],
-        g3: ['clamp(1.8rem, 2.618vw, 2.618rem)', {
-          lineHeight: '1.3',
-          letterSpacing: '-0.02em',
-        }],
-        g4: ['clamp(2.618rem, 4.236vw, 4.236rem)', {
-          lineHeight: '1.2',
-          letterSpacing: '-0.025em',
-          fontWeight: '800',
-        }],
-        g5: ['clamp(4.236rem, 6.854vw, 6.854rem)', {
-          lineHeight: '1.1',
-          letterSpacing: '-0.03em',
-          fontWeight: '900',
-        }],
-        g6: ['clamp(6.854rem, 11.09vw, 11.09rem)', {
-          lineHeight: '1',
-          letterSpacing: '-0.035em',
-          fontWeight: '900',
-        }],
-
+        g0: [
+          'clamp(0.5rem, 0.618vw, 0.618rem)',
+          {
+            lineHeight: '1.2',
+            letterSpacing: '-0.01em',
+          },
+        ],
+        g1: [
+          'clamp(0.8rem, 1vw, 1rem)',
+          {
+            lineHeight: '1.5',
+            letterSpacing: '-0.01em',
+          },
+        ],
+        g2: [
+          'clamp(1.2rem, 1.618vw, 1.618rem)',
+          {
+            lineHeight: '1.4',
+            letterSpacing: '-0.015em',
+          },
+        ],
+        g3: [
+          'clamp(1.8rem, 2.618vw, 2.618rem)',
+          {
+            lineHeight: '1.3',
+            letterSpacing: '-0.02em',
+          },
+        ],
+        g4: [
+          'clamp(2.618rem, 4.236vw, 4.236rem)',
+          {
+            lineHeight: '1.2',
+            letterSpacing: '-0.025em',
+            fontWeight: '800',
+          },
+        ],
+        g5: [
+          'clamp(4.236rem, 6.854vw, 6.854rem)',
+          {
+            lineHeight: '1.1',
+            letterSpacing: '-0.03em',
+            fontWeight: '900',
+          },
+        ],
+        g6: [
+          'clamp(6.854rem, 11.09vw, 11.09rem)',
+          {
+            lineHeight: '1',
+            letterSpacing: '-0.035em',
+            fontWeight: '900',
+          },
+        ],
       },
 
       aspectRatio: {
@@ -100,5 +118,4 @@ export default <Partial<Config>>{
       }),
     },
   },
-
 }

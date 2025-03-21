@@ -94,9 +94,8 @@
   --color-purple-950: #361f56;
 }
 
-
 .button {
-  @apply ring-1 ring-permadi-900 dark:bg-permadi-900 dark:text-permadi-50 dark:hover:bg-permadi-800 hover:ring-2 bg-white text-permadi-900 stroke-2 rounded hover:bg-permadi-100 dark:ring-permadi-700;
+  @apply ring-permadi-900 dark:bg-permadi-900 dark:text-permadi-50 dark:hover:bg-permadi-800 text-permadi-900 hover:bg-permadi-100 dark:ring-permadi-700 rounded bg-white stroke-2 ring-1 hover:ring-2;
 }
 
 :root {
@@ -118,7 +117,7 @@ html {
 }
 
 body {
-  @apply bg-permadi-100 dark:text-permadi-200 text-permadi-800 leading-tight dark:bg-permadi-950 tracking-wide font-sans text-[16px];
+  @apply bg-permadi-100 dark:text-permadi-200 text-permadi-800 dark:bg-permadi-950 font-sans text-[16px] leading-tight tracking-wide;
 }
 
 h1,
@@ -127,7 +126,7 @@ h3,
 h4,
 h5,
 h6 {
-  @apply font-title font-black   dark:text-yellow-500 text-permadi-800;
+  @apply font-title text-permadi-800 font-black dark:text-yellow-500;
 }
 
 ::-webkit-scrollbar {
@@ -157,5 +156,5 @@ h6 {
 }
 
 .button {
-  @apply ring-1 ring-permadi-900 dark:bg-permadi-900 dark:text-permadi-50 dark:hover:bg-permadi-800 hover:ring-2 bg-white text-permadi-900 stroke-2 rounded hover:bg-permadi-100 dark:ring-permadi-900;
+  @apply ring-permadi-900 dark:bg-permadi-900 dark:text-permadi-50 dark:hover:bg-permadi-800 text-permadi-900 hover:bg-permadi-100 dark:ring-permadi-900 rounded bg-white stroke-2 ring-1 hover:ring-2;
 }

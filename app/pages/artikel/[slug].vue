@@ -1,24 +1,24 @@
 <script lang="ts" setup>
 import type { Collections } from '@nuxt/content'
-import { queryCollection, useRoute } from '#imports'
-import { withLeadingSlash } from 'ufo'
 
 const { locale } = useI18n()
 
 // Ambil rute sekali saat inisialisasi
-const route = useRoute()
-const slug = computed(() => withLeadingSlash(String(route.params.slug)))
 
 // Ambil data artikel saat ini
-const { data: pageBlog } = await useAsyncData(`blogPage-${locale.value}`, async () => {
-  const collection = (`blog_${locale.value}`) as keyof Collections
-  const content = await queryCollection(collection).first()
-  if (!content)
-    throw new Error('Content not found')
-  return content
-}, {
-  watch: [locale], // Pastikan slug juga dipantau
-})
+const { data: pageBlog } = await useAsyncData(
+  `blogPage-${locale.value}`,
+  async () => {
+    const collection = `blog_${locale.value}` as keyof Collections
+    const content = await queryCollection(collection).first()
+    if (!content)
+      throw new Error('Content not found')
+    return content
+  },
+  {
+    watch: [locale], // Pastikan slug juga dipantau
+  },
+)
 
 useSeoMeta({
   title: pageBlog.value?.title,
@@ -29,7 +29,14 @@ useSeoMeta({
   author: 'Dinar Permadi Yusup',
   articleAuthor: ['Dinar Permadi Yusup'],
   articleSection: () => pageBlog.value?.title,
-  articleTag: () => ['dinar', 'permadi', 'dinar permadi', 'guru', 'developer', 'programmer'],
+  articleTag: () => [
+    'dinar',
+    'permadi',
+    'dinar permadi',
+    'guru',
+    'developer',
+    'programmer',
+  ],
   ogType: 'article',
   twitterTitle: () => pageBlog.value?.title,
   twitterDescription: () => pageBlog.value?.description,
@@ -37,7 +44,6 @@ useSeoMeta({
   twitterLabel1: 'Author',
   // twitterData2: () => formatReadingTime(calculateReadingTime(pageBlog.value?.body)),
   twitterLabel2: 'Read Time',
-
 })
 const setI18nParams = useSetI18nParams()
 setI18nParams({
@@ -60,7 +66,9 @@ setI18nParams({
       </p>
     </UCard>
     <UCard>
-      <div class="prose dark:prose-invert overflow-y-hidden prose-sm max-w-6xl mx-auto prose-permadi">
+      <div
+        class="prose dark:prose-invert prose-sm prose-permadi mx-auto max-w-6xl overflow-y-hidden"
+      >
         <ContentRenderer v-if="pageBlog" :value="pageBlog" />
       </div>
     </UCard>
@@ -69,7 +77,3 @@ setI18nParams({
     </UCard> -->
   </UContainer>
 </template>
-
-<style scoped>
-
-</style>

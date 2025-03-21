@@ -9,8 +9,7 @@ export function useScrollspy() {
 
       if (entry.isIntersecting)
         visibleHeadings.value.push(id)
-      else
-        visibleHeadings.value = visibleHeadings.value.filter(t => t !== id)
+      else visibleHeadings.value = visibleHeadings.value.filter(t => t !== id)
     })
   }
 
@@ -21,7 +20,8 @@ export function useScrollspy() {
   }
 
   watch(visibleHeadings, (newVal, oldVal) => {
-    nextTick(() => { // <-- Tambahkan nextTick di sini
+    nextTick(() => {
+      // <-- Tambahkan nextTick di sini
       if (newVal.length === 0) {
         activeHeadings.value = oldVal
       }

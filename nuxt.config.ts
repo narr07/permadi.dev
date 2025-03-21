@@ -17,11 +17,6 @@ export default defineNuxtConfig({
   content: {
     preview: {
       api: 'https://api.nuxt.studio',
-      gitInfo: {
-        name: 'permadi.dev',
-        owner: 'narr07',
-        url: 'https://github.com/narr07/permadi.dev',
-      },
     },
     database: {
       type: 'd1',
@@ -34,38 +29,8 @@ export default defineNuxtConfig({
             default: 'houston',
             dark: 'ayu-dark',
           },
-          langs: [
-            'json',
-            'js',
-            'ts',
-            'html',
-            'css',
-            'vue',
-            'diff',
-            'shell',
-            'markdown',
-            'yaml',
-            'bash',
-            'ini',
-            'c',
-            'cpp',
-          ],
-          preload: [
-            'json',
-            'js',
-            'ts',
-            'html',
-            'css',
-            'vue',
-            'diff',
-            'shell',
-            'markdown',
-            'yaml',
-            'bash',
-            'ini',
-            'c',
-            'cpp',
-          ],
+          langs: ['json', 'js', 'ts', 'html', 'css', 'vue', 'diff', 'shell', 'markdown', 'yaml', 'bash', 'ini', 'c', 'cpp'],
+          preload: ['json', 'js', 'ts', 'html', 'css', 'vue', 'diff', 'shell', 'markdown', 'yaml', 'bash', 'ini', 'c', 'cpp'],
         },
       },
     },
@@ -95,7 +60,6 @@ export default defineNuxtConfig({
   eslint: {
     config: {
       standalone: false,
-      stylistic: true,
     },
   },
   i18n: {
@@ -114,6 +78,12 @@ export default defineNuxtConfig({
       },
       'artikel-slug': {
         en: '/article/[slug]',
+      },
+      'proyek': {
+        en: '/project',
+      },
+      'galeri': {
+        en: '/gallery',
       },
     },
   },

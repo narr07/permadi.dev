@@ -37,16 +37,21 @@ interface EducationItem {
           <LazySvgGuru hydrate-on-visible />
         </UCard>
         <UCard class="flex w-full flex-col space-y-2">
-          <h1>{{ t('global.edutitle') }}</h1>
+          <h1>{{ t("global.edutitle") }}</h1>
           <h2 class="sr-only">
-            {{ t('global.edutitle') }}
+            {{ t("global.edutitle") }}
           </h2>
           <UAccordion :items="education">
             <template #content="{ item }">
-              Saya lulusan <span>
-                <NuxtLink target="_blank" :to="`${item.url}?ref=dinarpermadiyusup`" class="border-b hover:border-dashed border-dotted">
+              Saya lulusan
+              <span>
+                <NuxtLink
+                  target="_blank"
+                  :to="`${item.url}?ref=dinarpermadiyusup`"
+                  class="border-b border-dotted hover:border-dashed"
+                >
                   {{ item.institution }}
-                </NuxtLink> </span>.   Pada tahun {{ item.period }}
+                </NuxtLink> </span>. Pada tahun {{ item.period }}
             </template>
           </UAccordion>
         </UCard>
