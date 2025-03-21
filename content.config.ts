@@ -69,7 +69,8 @@ export default defineContentConfig({
         description: z.string(),
         date: z.date(),
         tags: z.array(z.string()),
-        slugs: z.string(),
+        id_slug: z.string(), // Required Indonesian slug
+        en_slug: z.string(), // Also require English slug for cross-language navigation
         seo: z.intersection(
           z.object({
             title: z.string().optional(),
@@ -100,7 +101,8 @@ export default defineContentConfig({
         description: z.string(),
         date: z.date(),
         tags: z.array(z.string()),
-        slugs: z.string(),
+        en_slug: z.string(), // Required English slug
+        id_slug: z.string(), // Also require Indonesian slug for cross-language navigation
         seo: z.intersection(
           z.object({
             title: z.string().optional(),

@@ -41,6 +41,7 @@ export default defineNuxtConfig({
   experimental: {
     componentIslands: true,
     viewTransition: true,
+    scanPageMeta: true,
   },
   compatibilityDate: '2024-11-01',
   nitro: {
@@ -67,16 +68,13 @@ export default defineNuxtConfig({
       { code: 'id', name: 'Indonesia', language: 'id_ID', iso: 'en-US' },
       { code: 'en', name: 'English', language: 'en-US', iso: 'id-ID' },
     ],
-    rootRedirect: 'id', // use default locale
     defaultLocale: 'id',
     strategy: 'prefix_except_default',
     lazy: true,
     vueI18n: '~/i18n.config.ts',
     customRoutes: 'config',
     pages: {
-      'artikel': {
-        en: '/article',
-      },
+
       'artikel-slug': {
         en: '/article/[slug]',
       },

@@ -1,27 +1,49 @@
 <script setup lang="ts">
 import type { Collections } from '@nuxt/content'
-import { withLeadingSlash } from 'ufo'
 
-const localePath = useLocalePath()
-const route = useRoute()
 const { locale, localeProperties } = useI18n()
-const slug = computed(() => withLeadingSlash(String(route.params.slug)))
 
-const { data: docs } = await useAsyncData(`blog-list-${locale.value}`, () => {
-  return queryCollection(`blog_${locale.value}`)
-    .order('date', 'DESC')
-    .select('title', 'path', 'description', 'slugs')
-    .all()
+const collection = computed(() => `pages_${locale.value}` as keyof Collections)
+
+const { data: page } = await useAsyncData(
+  `Artikel-${locale.value}`,
+  async () => {
+    const content = await queryCollection(collection.value)
+      .path('/article')
+      .first()
+    return content
+  },
+  {
+    watch: [locale],
+  },
+)
+
+if (!page.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Page not found',
+    fatal: true,
+  })
+}
+
+useSeoMeta({
+  title: page.value.title,
+  description: page.value.description,
 })
 </script>
 
 <template>
-  <div>
-    <NuxtLink v-for="doc in docs" :key="doc.path" :to="localePath(`/artikel/${doc.slugs}`)">
-      <UCard>
-        <h2>{{ doc.title }}</h2>
-        <p>{{ doc.description }}</p>
-      </UCard>
-    </NuxtLink>
-  </div>
+  <ContentRenderer
+    v-if="page"
+    :dir="localeProperties?.dir ?? 'ltr'"
+    :value="page"
+  />
 </template>
+<!--
+<template>
+  <UContainer>
+    <UCard>
+      Ini Home
+    </UCard>
+  </UContainer>
+</template> -->

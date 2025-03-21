@@ -26,15 +26,45 @@ const navigation = computed(() => [
 ])
 const route = useRoute()
 const localePath = useLocalePath()
+const { locale } = useI18n()
 
 function isActive(path: string): boolean {
+  // Handle home page
+  if (path === '/') {
+    return route.path === '/' || route.path === '/en'
+  }
+
   const localizedPath = localePath(path)
-  return (
-    route.path === localizedPath
-    || (localizedPath !== '/'
-      && localizedPath !== '/en'
-      && route.path.startsWith(`${localizedPath}/`))
-  )
+
+  // Check if route matches the localized path exactly
+  if (route.path === localizedPath) {
+    return true
+  }
+
+  // Check if route is a subpage of the localized path
+  if (localizedPath !== '/'
+    && localizedPath !== '/en'
+    && route.path.startsWith(`${localizedPath}/`)) {
+    return true
+  }
+
+  // Handle translated slugs for English locale
+  if (locale.value === 'en' && path !== '/') {
+    // Map default language paths to English equivalents
+    const pathMap: { [key: string]: string } = {
+      '/artikel': '/en/article',
+      '/proyek': '/en/project',
+      '/galeri': '/en/gallery',
+    }
+
+    // Check if current route starts with the English equivalent path
+    const mappedPath = pathMap[path as keyof typeof pathMap]
+    if (mappedPath && route.path.startsWith(mappedPath)) {
+      return true
+    }
+  }
+
+  return false
 }
 </script>
 

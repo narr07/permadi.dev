@@ -28,7 +28,7 @@ const { data: listBlog } = await useAsyncData(
   async () => {
     const collection = `blog_${locale.value}` as keyof Collections
     return (await queryCollection(collection)
-      .select('id', 'title', 'description', 'path', 'date', 'tags', 'body', 'slugs')
+      .select('id', 'title', 'description', 'path', 'date', 'tags', 'id_slug', 'en_slug', 'body')
       .order('date', 'DESC')
       .all()) as Collections['blog_id'][] | Collections['blog_en'][]
   },
@@ -77,6 +77,9 @@ useSeoMeta({
 //   title: t('website.blog'),
 //   description: t('website.description'),
 // })
+function getSlug(post) {
+  return locale.value === 'en' ? post.en_slug : post.id_slug
+}
 </script>
 
 <template>
@@ -100,7 +103,7 @@ useSeoMeta({
           <NuxtLink
             :aria-label="`${t('article.read')} ${post.title}`"
             :title="`${t('article.read')} ${post.title}`"
-            :to="localePath(`/artikel/${post.slugs}`)"
+            :to="localePath(`/artikel/${getSlug(post)}`)"
           >
             <UCard
               class="dark:hover:bg-permadi-700 h-full duration-100 ease-in-out hover:bg-yellow-500"
