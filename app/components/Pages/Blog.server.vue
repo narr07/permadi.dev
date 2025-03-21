@@ -28,12 +28,12 @@ const { data: listBlog } = await useAsyncData(
   async () => {
     const collection = `blog_${locale.value}` as keyof Collections
     return (await queryCollection(collection)
-      .select('title', 'description', 'path', 'date', 'tags', 'body', 'slugs')
+      .select('id', 'title', 'description', 'path', 'date', 'tags', 'body', 'slugs')
       .order('date', 'DESC')
       .all()) as Collections['blog_id'][] | Collections['blog_en'][]
   },
   {
-    watch: [locale],
+    watch: [locale, currentPage],
   },
 )
 

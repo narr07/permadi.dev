@@ -1,13 +1,17 @@
 <script lang="ts" setup>
 import type { Collections } from '@nuxt/content'
+import { withLeadingSlash } from 'ufo'
 
 const { locale } = useI18n()
 
-// Ambil rute sekali saat inisialisasi
+// Ensure pageBlog is typed correctly
+
+const route = useRoute()
+const slug = computed(() => withLeadingSlash(String(route.params.slug)))
 
 // Ambil data artikel saat ini
 const { data: pageBlog } = await useAsyncData(
-  `blogPage-${locale.value}`,
+  `blogPage-${locale.value}-${route}`,
   async () => {
     const collection = `blog_${locale.value}` as keyof Collections
     const content = await queryCollection(collection).first()
@@ -16,7 +20,7 @@ const { data: pageBlog } = await useAsyncData(
     return content
   },
   {
-    watch: [locale], // Pastikan slug juga dipantau
+    watch: [locale, slug], // Pastikan slug juga dipantau
   },
 )
 
@@ -54,8 +58,8 @@ setI18nParams({
 
 <template>
   <UContainer>
+    {{ slug }}
     <UCard class="mb-2">
-      {{ pageBlog }}
       <div v-if="pageBlog" :value="pageBlog">
         <h1 class="text-g3">
           {{ pageBlog.title }}

@@ -1,17 +1,5 @@
 import { defineCollection, defineContentConfig, z } from '@nuxt/content'
 
-// const gallerySchema = z.object({
-//   title: z.string(),
-//   tools: z.object({
-//     src: z.string().editor({ input: 'icon' }),
-//   }),
-//   images: z.array(
-//     z.object({
-//       src: z.string().editor({ input: 'media' }),
-//     }),
-//   ),
-// })
-
 export default defineContentConfig({
   collections: {
     pages_id: defineCollection({
@@ -79,10 +67,9 @@ export default defineContentConfig({
       schema: z.object({
         title: z.string(),
         description: z.string(),
-        slugs: z.string(),
         date: z.date(),
         tags: z.array(z.string()),
-        category: z.enum(['Education', 'Design', 'Programmer']).optional(),
+        slugs: z.string(),
         seo: z.intersection(
           z.object({
             title: z.string().optional(),
@@ -111,10 +98,9 @@ export default defineContentConfig({
       schema: z.object({
         title: z.string(),
         description: z.string(),
-        slugs: z.string(),
         date: z.date(),
         tags: z.array(z.string()),
-        category: z.enum(['Education', 'Design', 'Programmer']).optional(),
+        slugs: z.string(),
         seo: z.intersection(
           z.object({
             title: z.string().optional(),
