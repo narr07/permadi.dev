@@ -95,7 +95,7 @@ useSeoMeta({
           <NuxtLink
             :aria-label="`${t('article.read')} ${post.title}`"
             :title="`${t('article.read')} ${post.title}`"
-            :to="localePath(`/artikel/${post.slugs}`)"
+            :to="localePath(`/artikel${post.path}`)"
           >
             <UCard
               class="dark:hover:bg-permadi-700 h-full duration-100 ease-in-out hover:bg-yellow-500"
