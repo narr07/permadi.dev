@@ -2,6 +2,8 @@
 <script setup lang="ts">
 const { setLocale, locales, locale } = useI18n()
 
+const switchLocalePath = useSwitchLocalePath()
+
 const items = locales.value.map(_locale => ({
   label: _locale.code,
   id: _locale.code,
@@ -13,6 +15,7 @@ const value = ref(locale.value)
 
 watch(value, (newLocale) => {
   setLocale(newLocale)
+  switchLocalePath(newLocale)
 })
 
 const icon = computed(() => items.find(item => item.id === value.value)?.icon)

@@ -73,8 +73,11 @@ export default defineNuxtConfig({
     lazy: true,
     vueI18n: '~/i18n.config.ts',
     customRoutes: 'config',
-    pages: {
 
+    pages: {
+      'artikel': {
+        en: '/article',
+      },
       'artikel-slug': {
         en: '/article/[slug]',
       },
@@ -106,6 +109,9 @@ export default defineNuxtConfig({
     alias: {
       youtube: 'https://img.youtube.com',
       vimeo: 'https://i.vimeocdn.com',
+    },
+    app: {
+      pageTransition: { name: 'page', mode: 'out-in' },
     },
     screens: {
       'xs': 320,

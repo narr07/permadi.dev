@@ -26,7 +26,7 @@ const { data: listBlog } = await useAsyncData(
   `listBlog-${locale.value}`,
   async () => {
     return (await queryCollection(`blog_${locale.value}`)
-      .select('title', 'description', 'path', 'date', 'tags', 'id_slug', 'en_slug')
+      .select('title', 'description', 'path', 'date', 'tags', 'slugs')
       .order('date', 'DESC')
       .all()) as Collections['blog_id'][] | Collections['blog_en'][]
   },
@@ -74,9 +74,9 @@ useSeoMeta({
 //   title: t('website.blog'),
 //   description: t('website.description'),
 // })
-function getSlug(post: Collections['blog_id'] | Collections['blog_en']) {
-  return locale.value === 'id' ? post.id_slug : post.en_slug
-}
+// function getSlug(post: Collections['blog_id'] | Collections['blog_en']) {
+//   return locale.value === 'id' ? post.id_slug : post.en_slug
+// }
 </script>
 
 <template>
@@ -95,7 +95,7 @@ function getSlug(post: Collections['blog_id'] | Collections['blog_en']) {
           <NuxtLink
             :aria-label="`${t('article.read')} ${post.title}`"
             :title="`${t('article.read')} ${post.title}`"
-            :to="localePath(`/artikel/${getSlug(post)}`)"
+            :to="localePath(`/artikel/${post.slugs}`)"
           >
             <UCard
               class="dark:hover:bg-permadi-700 h-full duration-100 ease-in-out hover:bg-yellow-500"
